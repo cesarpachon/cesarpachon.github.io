@@ -1,0 +1,25 @@
+﻿<html>
+<head/>
+<body>
+<h2><a onclick="onShowContent('projects.php');">Proyectos Comerciales:</a> Aleph Zero</h2>
+
+<img src="img/logo_alef.png" />
+
+<h3>Descripción del proyecto</h3>
+<p>
+ <a href="http://www.alefcero.com" target="_blank">Aleph Zero</a> 
+surge como una empresa especializada en investigación y desarrollo, soportada desde el área de investigación por el grupo PRISMA de la Universidad Autónoma de Bucaramanga (UNAB) y el grupo LABCOM de la Universidad Javeriana de Colombia.  
+ </p>
+ 
+ <p>
+ El objetivo de Aleph Zero es centralizar y ofrecer el conocimiento y herramientas desarrolladas en el área de proyectos de tecnologías aplicados a la educación, que incluyen e-learning, mundos virtuales, simuladores 3D y desarrollo de software usando tecnologías open source.
+ </p>
+
+
+<h3>Enlaces relacionados</h3>
+<p>
+Sitio web de la empresa: <a href="http://www.alefcero.com" target="_blank">http://www.alefcero.com</a>
+</p>
+
+</body>
+</html>

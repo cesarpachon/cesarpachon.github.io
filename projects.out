@@ -1,0 +1,37 @@
+﻿<html>
+<head/>
+<body>
+<h2>Referencias</h2>
+
+<p>
+Los siguientes son los proyectos comerciales activos en los que estoy participando:
+</p>
+
+<ul>
+	<li>
+	<strong>
+		<a href="#" onclick="onShowContent('mundopato.php');">
+			Mundopato: 
+		</a>
+	</strong>Mundos virtuales para niños con autismo. Proyecto en ejecución en USA, derivado de tesis de maestría en e-learning. 
+	</li>
+<br>
+	<li>
+	<strong>
+		<a href="#" onclick="onShowContent('alephzero.php');">
+	Aleph Zero: 	
+	</a>
+	</strong> Empresa de servicios de consultoría y outsourcing en I+D.
+	</li>
+<br>
+
+	<li>
+	<strong>
+		<a href="#" onclick="onShowContent('virtualhumboldt.php');">
+	Virtualhumboldt: 
+	</a>
+	</strong>Educación virtual (e-learning) para nivel de formación técnico laboral.
+	</li>
+	
+</ul>
+</body>
