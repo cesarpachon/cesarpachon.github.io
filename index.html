@@ -64,7 +64,7 @@ function  onShowContent_ajax(content)
 
 </head>
 
-<body onload="javascript:initAjax(); ">
+<body onload="javascript:initAjax(); onShowContent('start.html');">
 
 <div class="container">
 
@@ -121,7 +121,7 @@ function  onShowContent_ajax(content)
 <div class="menu_entry" onclick="onShowContent('articles.html');">Articulos</div>
 <div class="menu_entry" onclick="onShowContent('tutorials.html');">Tutoriales</div>
 <div class="menu_entry" onclick="onShowContent('presentations.html');">Presentaciones</div>
-<!--<div class="menu_entry" onclick="onShowContent('projects.html');">ArtÃ­culos</div>-->
+<!--<div class="menu_entry" onclick="onShowContent('projects.html');">Artículos</div>-->
 <br>
 <div class="menu_entry" onclick="onShowContent('cartoons.html');">Caricaturas</div>
 
@@ -137,55 +137,6 @@ function  onShowContent_ajax(content)
 
 </div>
 <div class="content" id="content">
-
-<.html 
-	$content = 'start.html';
-	if(isset($_REQUEST['id']) )
-	{
-		$whitelist = array("alephzero.html", 
-							"areas.html", 
-							"blog.html",
-							"cartoons.html",
-							"contact.html",
-							"documents.html",
-							"elearning.html",
-							"gim.html",
-							"index.html",
-							"labcom.html",
-							"mundopato.html",
-							"nee.html",
-							"ohwaha.html",
-							"opensource.html",
-							"papers.html",
-							"articles.html",
-							"tutorials.html",
-							"pcc.html",
-							"presentations.html",
-							"prisma.html",
-							"references.html",
-							"research.html",
-							"simuladores.html",
-							"start.html",
-							"teletrabajo.html",
-							"virtualhumboldt.html",
-							"virtualworlds.html"
-							);
-	
-			$content = $_REQUEST['id']; 
-			if (in_array($content, $whitelist))
-			{
-				include($content);
-			}
-			else
-			{
-			echo "<p>content not found.</p>";
-			}
-	}
-	else
-	{
-				include("start.html");
-	}
-?>
 
 
 </div>
@@ -203,5 +154,4 @@ Cesar Pachón 2014 - Colombia - cesarpachon@gmail.com
 </div>
 
 </body>
-
 </html>
