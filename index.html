@@ -1,10 +1,207 @@
-<html>
-	<head>
-		<title>cesar pachon</title>
-	</head>
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8855-1" />
+<title>C++ OpenGL - Cesar Pachón - consultoria y desarrollo de videojuegos 3D </title>
 
-	<body>
-		<div>Sitio en reconstruccion.. de regreso en feb/2014</div>
-	</body>
+<meta name="description" content="consultoria y desarrollo de videojuegos 3D OpenGL C++" />
+
+
+<meta name="keywords" content="c++, opengl, videojuegos, 3d, computación gráfica, gameplay3d " /> 
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="jsrc/myajax.js"></script>
+
+
+<script type="text/javascript">
+function onShowContent(content)
+{
+  window.location = "index.html?id="+content; 
+}
+
+function  onShowContent_ajax(content)
+{
+	xmlhttp.onreadystatechange=function()
+	{
+		if(xmlhttp.readyState==4)
+  		{
+		//problem to trigger javascript.. try another complex solution
+				//document.getElementById('catalog_detail').innerHTML = xmlhttp.responseText;
+
+				//http://www.webdeveloper.com/forum/archive/index.html/t-177998.html
+				var search = xmlhttp.responseText;
+				var script;
+				while( script = search.match(/(<script[^>]+javascript[^>]+>\s*(<!--)?)/i))
+				{
+					search = search.substr(search.indexOf(RegExp.$1) + RegExp.$1.length);
+					if (!(endscript = search.match(/((-->)?\s*<\/script>)/))) break;
+					block = search.substr(0, search.indexOf(RegExp.$1));
+					search = search.substring(block.length + RegExp.$1.length);
+					var oScript = document.createElement('script');
+					oScript.text = block;
+					document.getElementsByTagName("head").item(0).appendChild(oScript);
+				}
+			var content_div = document.getElementById("content");
+			content_div.innerHTML = xmlhttp.responseText;
+			
+			//try to customize width of content if it is a blog..
+			/*if(content == "blog.html")
+			{
+				content_div.style.margin-left="30%";
+				content_div.style.margin-right="40px";
+			}
+			else
+			{
+				content_div.style.margin-left="30%";
+				content_div.style.margin-right="40px";				
+			}*/
+  		}
+	}
+	xmlhttp.open("GET",content,true);
+	xmlhttp.send(null);
+}
+</script>
+
+</head>
+
+<body onload="javascript:initAjax(); ">
+
+<div class="container">
+
+<div id="header" class="header">
+<!--<div class="head">header</div>-->
+<h1>El Ermitaño Digital</h1>
+<span class="slogan">IntrospeccÃ³n apoyada en TICs</span>
+<br><br>
+<span class="slogan2">PÃgina personal de Cesar PachÃ³n</span>
+<br><br><br>
+<br><br><br>
+<br><br>
+<br><div align="center" style="font-style:italic">Software Libre y educaciÃ³n virtual
+</div>
+</div>
+
+<div "menu" class="menu">
+
+<h3><a onclick="onShowContent('start.html');">Inicio</a></h3>
+
+<!--<h3><a onclick="onShowContent('blog.html');">Blog</a></h3>-->
+
+<!--
+<div class="menu_entry" onclick="onShowContent('mundopato.html');">Mundopato</div>
+<div class="menu_entry" onclick="onShowContent('alephzero.html');">Aleph Zero</div>
+<div class="menu_entry" onclick="onShowContent('virtualhumboldt.html');">Virtualhumboldt</div>
+-->
+
+<h3><a onclick="onShowContent('research.html');">Grupos de Investigación</a></h3>
+<div class="menu_entry" onclick="onShowContent('prisma.html');">UNAB - prisma</div>
+<div class="menu_entry" onclick="onShowContent('pcc.html');">UNAL - ccp</div>
+<div class="menu_entry" onclick="onShowContent('ohwaha.html');">UNAL - ohwaha</div>
+<div class="menu_entry" onclick="onShowContent('gim.html');">UMNG - gim</div>
+<div class="menu_entry" onclick="onShowContent('labcom.html');">PUJ - labcom</div>
+
+<h3><a onclick="onShowContent('areas.html');">Áreas de interés</a></h3>
+
+<div class="menu_entry" onclick="onShowContent('nee.html');">TICs y NEE</div>
+<div class="menu_entry" onclick="onShowContent('elearning.html');">e-learning</div>
+<div class="menu_entry" onclick="onShowContent('virtualworlds.html');">Mundos Virtuales</div>
+<div class="menu_entry" onclick="onShowContent('simuladores.html');">Simuladores</div>
+<div class="menu_entry" onclick="onShowContent('teletrabajo.html');">Teletrabajo</div>
+<div class="menu_entry" onclick="onShowContent('opensource.html');">Software libre</div>
+
+<!--
+<h3>Desarrollo de software</h3>
+<div class="menu_entry" onclick="onShowContent('projects.html');">Java y Openoffice</div>
+<div class="menu_entry" onclick="onShowContent('projects.html');">PHP</div>
+<div class="menu_entry" onclick="onShowContent('projects.html');">C++</div>
+-->
+
+<h3><a onclick="onShowContent('documents.html');">Escritos y publicaciones</a></h3>
+<div class="menu_entry" onclick="onShowContent('papers.html');">Papers</div>
+<div class="menu_entry" onclick="onShowContent('articles.html');">Articulos</div>
+<div class="menu_entry" onclick="onShowContent('tutorials.html');">Tutoriales</div>
+<div class="menu_entry" onclick="onShowContent('presentations.html');">Presentaciones</div>
+<!--<div class="menu_entry" onclick="onShowContent('projects.html');">Artículos</div>-->
+<br>
+<div class="menu_entry" onclick="onShowContent('cartoons.html');">Caricaturas</div>
+
+<!--
+<h3>Charlas y seminarios</h3>
+-->
+<h3><a onclick="onShowContent('references.html');">Referencias</a></h3>
+
+<h3>
+<div class="menu_entry" onclick="onShowContent('contact.html');">Contacto</div>
+</h3>
+
+
+</div>
+<div class="content" id="content">
+
+<.html 
+	$content = 'start.html';
+	if(isset($_REQUEST['id']) )
+	{
+		$whitelist = array("alephzero.html", 
+							"areas.html", 
+							"blog.html",
+							"cartoons.html",
+							"contact.html",
+							"documents.html",
+							"elearning.html",
+							"gim.html",
+							"index.html",
+							"labcom.html",
+							"mundopato.html",
+							"nee.html",
+							"ohwaha.html",
+							"opensource.html",
+							"papers.html",
+							"articles.html",
+							"tutorials.html",
+							"pcc.html",
+							"presentations.html",
+							"prisma.html",
+							"references.html",
+							"research.html",
+							"simuladores.html",
+							"start.html",
+							"teletrabajo.html",
+							"virtualhumboldt.html",
+							"virtualworlds.html"
+							);
+	
+			$content = $_REQUEST['id']; 
+			if (in_array($content, $whitelist))
+			{
+				include($content);
+			}
+			else
+			{
+			echo "<p>content not found.</p>";
+			}
+	}
+	else
+	{
+				include("start.html");
+	}
+?>
+
+
+</div>
+<div class="footer">
+Cesar PachÃ³n 2014 - Colombia - cesarpachon@gmail.com
+</div>
+</div>
+
+<div id='twitterfeed' style='position:absolute;top:100px;left:80%;width:240px;height:400px;'>
+
+<a class="twitter-timeline"  href="https://twitter.com/cesarpachon"  data-widget-id="364424298728931328">Tweets by @cesarpachon</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+</div>
+
+</body>
+
 </html>
-
