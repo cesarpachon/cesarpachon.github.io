@@ -219,7 +219,8 @@ angular.module('localization', [])
 'use strict';
 
 var muPortalApp = angular.module('muPortal', ['ngRoute', 'localization', 'ui.bootstrap', 'UserApp']).
-    config(['$routeProvider', function ($routeProvider) {
+    config(['$routeProvider','$locationProvider',  function ($routeProvider, $locationProvider) {
+    	$locationProvider.html5Mode(true);
         $routeProvider.
             when('/', {templateUrl:'partials/welcome.html', controller:"mainController"}).
             when('/login', {templateUrl:'partials/login.html', controller:"authController", public: true}).
