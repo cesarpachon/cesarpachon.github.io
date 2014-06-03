@@ -1,4 +1,5 @@
-<html>
+<html ng-app="portal" ng-controller="mainCtrl">
+	 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cesar Pachón</title>
@@ -10,46 +11,37 @@
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="jsrc/myajax.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+
 
 
 <script type="text/javascript">
 
-function  onShowContent(content)
-{
-	xmlhttp.onreadystatechange=function()
-	{
-		if(xmlhttp.readyState==4)
-  		{
-		//problem to trigger javascript.. try another complex solution
-				//document.getElementById('catalog_detail').innerHTML = xmlhttp.responseText;
+'use strict';
 
-				//http://www.webdeveloper.com/forum/archive/index.html/t-177998.html
-				var search = xmlhttp.responseText;
-				var script;
-				while( script = search.match(/(<script[^>]+javascript[^>]+>\s*(<!--)?)/i))
-				{
-					search = search.substr(search.indexOf(RegExp.$1) + RegExp.$1.length);
-					if (!(endscript = search.match(/((-->)?\s*<\/script>)/))) break;
-					block = search.substr(0, search.indexOf(RegExp.$1));
-					search = search.substring(block.length + RegExp.$1.length);
-					var oScript = document.createElement('script');
-					oScript.text = block;
-					document.getElementsByTagName("head").item(0).appendChild(oScript);
-				}
-			var content_div = document.getElementById("content");
-			content_div.innerHTML = xmlhttp.responseText;
-			
-		}
-	}
-	xmlhttp.open("GET",content,true);
-	xmlhttp.send(null);
-}
+var portalApp = angular.module('portal', ['ngRoute']).
+    config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.
+            when('/start', {templateUrl:'start.html', controller:"mainCtrl"}).
+            when('/research', {templateUrl:'research.html', controller:"mainCtrl"}).
+            
+            when('/profile', {templateUrl:'partials/profile.html', controller:"mainCtrl"}).
+            when('/virtualworld', {templateUrl:'partials/virtualworld.html', controller:"mainCtrl"}).
+            otherwise({templateUrl:'start.html', controller:"mainCtrl"});
+    }]);
+
+
+portalApp.controller('mainCtrl',
+    function($scope, $window) {
+    });
+
+
 </script>
 
 </head>
 
-<body onload="javascript:initAjax(); onShowContent('start.html');">
+<body>
 
 <div class="container">
 
@@ -68,7 +60,7 @@ function  onShowContent(content)
 
 <div "menu" class="menu">
 
-<h3><a onclick="onShowContent('start.html');">Inicio</a></h3>
+<h3><a href="#/start">Inicio</a></h3>
 
 <!--<h3><a onclick="onShowContent('blog.html');">Blog</a></h3>-->
 
@@ -78,14 +70,14 @@ function  onShowContent(content)
 <div class="menu_entry" onclick="onShowContent('virtualhumboldt.html');">Virtualhumboldt</div>
 -->
 
-<h3><a onclick="onShowContent('research.html');">Grupos de Investigación</a></h3>
-<div class="menu_entry" onclick="onShowContent('prisma.html');">UNAB - prisma</div>
-<div class="menu_entry" onclick="onShowContent('pcc.html');">UNAL - ccp</div>
-<div class="menu_entry" onclick="onShowContent('ohwaha.html');">UNAL - ohwaha</div>
-<div class="menu_entry" onclick="onShowContent('gim.html');">UMNG - gim</div>
-<div class="menu_entry" onclick="onShowContent('labcom.html');">PUJ - labcom</div>
+<h3><a href="#/research">Grupos de Investigación</a></h3>
+<a class="menu_entry" href="#/prisma">UNAB - prisma</a><br>
+<a class="menu_entry" href="#/pcc">UNAL - ccp</a><br>
+<a class="menu_entry" href="#/ohwaha">UNAL - ohwaha</a><br>
+<a class="menu_entry" href="#/gim">UMNG - gim</a><br>
+<a class="menu_entry" href="#/labcom">PUJ - labcom</a><br>
 
-<h3><a onclick="onShowContent('areas.html');">Areas de interés</a></h3>
+<h3><a href="#/areas">Areas de interés</a></h3>
 
 <div class="menu_entry" onclick="onShowContent('nee.html');">TICs y NEE</div>
 <div class="menu_entry" onclick="onShowContent('elearning.html');">e-learning</div>
@@ -123,15 +115,12 @@ function  onShowContent(content)
 
 
 </div>
-<div class="content" id="content">
-
+<div class="content" id="content" ng-view >
 
 </div>
 <div class="footer">
 Cesar Pachón 2014 - Colombia - cesarpachon@gmail.com
 </div>
-</div>
-
 </div>
 
 </body>
