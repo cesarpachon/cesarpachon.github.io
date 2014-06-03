@@ -25,9 +25,30 @@ var portalApp = angular.module('portal', ['ngRoute']).
         $routeProvider.
             when('/start', {templateUrl:'start.html', controller:"mainCtrl"}).
             when('/research', {templateUrl:'research.html', controller:"mainCtrl"}).
+            when('/research/prisma', {templateUrl:'prisma.html', controller:"mainCtrl"}).
+            when('/research/pcc', {templateUrl:'pcc.html', controller:"mainCtrl"}).
+            when('/research/ohwaha', {templateUrl:'ohwaha.html', controller:"mainCtrl"}).
+            when('/research/gim', {templateUrl:'gim.html', controller:"mainCtrl"}).
+            when('/research/labcom', {templateUrl:'labcom.html', controller:"mainCtrl"}).
             
-            when('/profile', {templateUrl:'partials/profile.html', controller:"mainCtrl"}).
-            when('/virtualworld', {templateUrl:'partials/virtualworld.html', controller:"mainCtrl"}).
+            when('/areas', {templateUrl:'areas.html', controller:"mainCtrl"}).
+            when('/areas/nee', {templateUrl:'nee.html', controller:"mainCtrl"}).
+            when('/areas/elearning', {templateUrl:'elearning.html', controller:"mainCtrl"}).
+            when('/areas/virtualworlds', {templateUrl:'virtualworlds.html', controller:"mainCtrl"}).
+            when('/areas/simuladores', {templateUrl:'simuladores.html', controller:"mainCtrl"}).
+            when('/areas/opensource', {templateUrl:'opensource.html', controller:"mainCtrl"}).
+
+            when('/documents', {templateUrl:'documents.html', controller:"mainCtrl"}).
+            when('/papers', {templateUrl:'papers.html', controller:"mainCtrl"}).
+            when('/articles', {templateUrl:'articles.html', controller:"mainCtrl"}).
+            when('/tutorials', {templateUrl:'tutorials.html', controller:"mainCtrl"}).
+            when('/presentations', {templateUrl:'presentations.html', controller:"mainCtrl"}).
+            when('/poems', {templateUrl:'poesia.html', controller:"mainCtrl"}).
+            when('/cartoons', {templateUrl:'cartoons.html', controller:"mainCtrl"}).
+            
+            when('/contact', {templateUrl:'contact.html', controller:"mainCtrl"}).
+            
+            
             otherwise({templateUrl:'start.html', controller:"mainCtrl"});
     }]);
 
@@ -71,20 +92,20 @@ portalApp.controller('mainCtrl',
 -->
 
 <h3><a href="#/research">Grupos de Investigación</a></h3>
-<a class="menu_entry" href="#/prisma">UNAB - prisma</a><br>
-<a class="menu_entry" href="#/pcc">UNAL - ccp</a><br>
-<a class="menu_entry" href="#/ohwaha">UNAL - ohwaha</a><br>
-<a class="menu_entry" href="#/gim">UMNG - gim</a><br>
-<a class="menu_entry" href="#/labcom">PUJ - labcom</a><br>
+<a class="menu_entry" href="#/research/prisma">UNAB - prisma</a><br>
+<a class="menu_entry" href="#/research/pcc">UNAL - ccp</a><br>
+<a class="menu_entry" href="#/research/ohwaha">UNAL - ohwaha</a><br>
+<a class="menu_entry" href="#/research/gim">UMNG - gim</a><br>
+<a class="menu_entry" href="#/research/labcom">PUJ - labcom</a><br>
 
 <h3><a href="#/areas">Areas de interés</a></h3>
 
-<div class="menu_entry" onclick="onShowContent('nee.html');">TICs y NEE</div>
-<div class="menu_entry" onclick="onShowContent('elearning.html');">e-learning</div>
-<div class="menu_entry" onclick="onShowContent('virtualworlds.html');">Mundos Virtuales</div>
-<div class="menu_entry" onclick="onShowContent('simuladores.html');">Simuladores</div>
-<div class="menu_entry" onclick="onShowContent('teletrabajo.html');">Teletrabajo</div>
-<div class="menu_entry" onclick="onShowContent('opensource.html');">Software libre</div>
+<a class="menu_entry" href="#/areas/nee">TICs y NEE</a><br>
+<a class="menu_entry" href="#/areas/elearning">e-learning</a><br>
+<a class="menu_entry" href="#/areas/virtualworlds">Mundos Virtuales</a><br>
+<a class="menu_entry" href="#/areas/simuladores">Simuladores</a><br>
+<!--<a class="menu_entry" href="#/areas/teletrabajo">Teletrabajo</a><br>-->
+<a class="menu_entry" href="#/areas/opensource">Software libre</a><br>
 
 <!--
 <h3>Desarrollo de software</h3>
@@ -93,15 +114,13 @@ portalApp.controller('mainCtrl',
 <div class="menu_entry" onclick="onShowContent('projects.html');">C++</div>
 -->
 
-<h3><a onclick="onShowContent('documents.html');">Escritos y publicaciones</a></h3>
-<div class="menu_entry" onclick="onShowContent('papers.html');">Papers</div>
-<div class="menu_entry" onclick="onShowContent('articles.html');">Articulos</div>
-<div class="menu_entry" onclick="onShowContent('tutorials.html');">Tutoriales</div>
-<div class="menu_entry" onclick="onShowContent('presentations.html');">Presentaciones</div>
-<!--<div class="menu_entry" onclick="onShowContent('projects.html');">Artículos</div>-->
-<br>
-<div class="menu_entry" onclick="onShowContent('poesia.html');">Poesía</div>
-<div class="menu_entry" onclick="onShowContent('cartoons.html');">Caricaturas</div>
+<h3><a href= "#/documents">Escritos y publicaciones</a></h3>
+<a class="menu_entry" href= '#/papers'>Papers</a><br>
+<a class="menu_entry" href= '#/articles'>Articulos</a><br>
+<a class="menu_entry" href= '#/tutorials'>Tutoriales</a><br>
+<a class="menu_entry" href= '#/presentations'>Presentaciones</a><br>
+<a class="menu_entry" href= '#/poems'>Poesía</a><br>
+<a class="menu_entry" href= '#/cartoons'>Caricaturas</a><br>
 
 <!--
 <h3>Charlas y seminarios</h3>
@@ -110,7 +129,7 @@ portalApp.controller('mainCtrl',
 -->
 
 <h3>
-<a class="menu_entry" onclick="onShowContent('contact.html');">Contacto</a>
+<a class="menu_entry" href="#/contact">Contacto</a>
 </h3>
 
 
