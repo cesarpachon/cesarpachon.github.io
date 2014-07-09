@@ -1,100 +1,100 @@
-BODY {
-	FONT-SIZE: 14px; 
-	COLOR: #400000; 
-	FONT-FAMILY: "omnes-pro", Verdana, Geneva, Arial, Helvetica, sans-serif, sans-serif; 
-	BACKGROUND-COLOR: #ccbfae;
-	
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  /*display: table;*/
+	BODY {
+		FONT-SIZE: 14px; 
+		COLOR: #400000; 
+		FONT-FAMILY: "omnes-pro", Verdana, Geneva, Arial, Helvetica, sans-serif, sans-serif; 
+		BACKGROUND-COLOR: #ccbfae;
+		
+	  padding: 0;
+	  margin: 0;
+	  width: 100%;
+	  /*display: table;*/
 
-}
+	}
 
-p
-{
-line-height:180%;
-}
+	p
+	{
+	line-height:180%;
+	}
 
-li
-{
-line-height:180%;
-}
+	li
+	{
+	line-height:180%;
+	}
 
-A
-{
- cursor:pointer;
-}
+	A
+	{
+	 cursor:pointer;
+	}
 
-A:link {
+	A:link {
+		color: #4e719d;
+	}
+	A:hover , A:active 
+	{
+	color: #bb7d55;
+	}
+
+
+	h1
+	{
+	color: #dbd1c2;
+	font-weight: bold;
+	font-size: 24px;
+	}
+
+	h2
+	{
 	color: #4e719d;
-}
-A:hover , A:active 
-{
-color: #bb7d55;
-}
+	font-weight: bold;
+	font-size: 18px;
+	}
 
+	h3
+	{
+	font-weight: bold;
+	font-size: 14px;
+	}
 
-h1
-{
-color: #dbd1c2;
-font-weight: bold;
-font-size: 24px;
-}
+	.menu_entry
+	{
+	 cursor:pointer;
+	 line-height:130%;
+	}
 
-h2
-{
-color: #4e719d;
-font-weight: bold;
-font-size: 18px;
-}
+	.container
+	{
+	width: 855px;
+	/*height: 100%;*/
+	margin-left: auto;
+	margin-right: auto;
+	  background-image: url("../repeat.jpg");
+	background-repeat: y-repeat;
+	background-position: top center;
 
-h3
-{
-font-weight: bold;
-font-size: 14px;
-}
+	}
 
-.menu_entry
-{
- cursor:pointer;
- line-height:130%;
-}
+	.header
+	{
+	/*width: 855px;*/
+	height: 250px;
+	  background-image: url("../head.jpg");
+	background-repeat: no-repeat;
+	background-position: top center;
+		padding-top: 20px;
+	    padding-left: 50px;
+	    margin: 0px;
+	    text-align: left;
+		BACKGROUND-COLOR: #ccbfae;
+	}
 
-.container
-{
-width: 855px;
-/*height: 100%;*/
-margin-left: auto;
-margin-right: auto;
-  background-image: url("../repeat.jpg");
-background-repeat: y-repeat;
-background-position: top center;
+	.slogan
+	{
+	FONT-SIZE: 18px; 
+	}
 
-}
-
-.header
-{
-/*width: 855px;*/
-height: 250px;
-  background-image: url("../head.jpg");
-background-repeat: no-repeat;
-background-position: top center;
-	padding-top: 20px;
-    padding-left: 50px;
-    margin: 0px;
-    text-align: left;
-	BACKGROUND-COLOR: #ccbfae;
-}
-
-.slogan
-{
-FONT-SIZE: 16px; 
-}
-
-.slogan2
-{
-FONT-SIZE: 14px; 
+	.slogan2
+	{
+	FONT-SIZE: 16px; 
 }
 .menu
 {
