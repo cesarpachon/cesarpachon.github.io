@@ -1,5 +1,5 @@
 <html ng-app="portal" ng-controller="mainCtrl">
-	 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cesar Pachón</title>
@@ -7,7 +7,7 @@
 <meta name="description" content="Software Libre y Educación virtual" />
 
 
-<meta name="keywords" content="c++, opengl, videojuegos, 3d, computación gáfica, gameplay3d, e-learning, software libre " /> 
+<meta name="keywords" content="c++, opengl, videojuegos, 3d, computación gáfica, gameplay3d, e-learning, software libre " />
 
 <link href="css/font.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -15,6 +15,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
 
+    <script src="jsrc/img.js"></script>
 
 
 <script type="text/javascript">
@@ -31,7 +32,7 @@ var portalApp = angular.module('portal', ['ngRoute']).
             when('/research/ohwaha', {templateUrl:'ohwaha.html', controller:"mainCtrl"}).
             when('/research/gim', {templateUrl:'gim.html', controller:"mainCtrl"}).
             when('/research/labcom', {templateUrl:'labcom.html', controller:"mainCtrl"}).
-            
+
             when('/areas', {templateUrl:'areas.html', controller:"mainCtrl"}).
             when('/areas/nee', {templateUrl:'nee.html', controller:"mainCtrl"}).
             when('/areas/elearning', {templateUrl:'elearning.html', controller:"mainCtrl"}).
@@ -45,13 +46,14 @@ var portalApp = angular.module('portal', ['ngRoute']).
             when('/tutorials', {templateUrl:'tutorials.html', controller:"mainCtrl"}).
             when('/tutorials/angularwizard', {templateUrl:'tutorial_angular_wizard.html', controller:"mainCtrl"}).
             when('/tutorials/momentjs', {templateUrl:'tutorial_moment_js.html', controller:"mainCtrl"}).
+            when('/tutorials/blender3dsprites', {templateUrl:'tutorial_blender3d_sprites.html', controller:"mainCtrl"}).
             when('/presentations', {templateUrl:'presentations.html', controller:"mainCtrl"}).
             when('/poems', {templateUrl:'poesia.html', controller:"mainCtrl"}).
             when('/cartoons', {templateUrl:'cartoons.html', controller:"mainCtrl"}).
-            
+
             when('/contact', {templateUrl:'contact.html', controller:"mainCtrl"}).
-            
-            
+
+
             otherwise({templateUrl:'start.html', controller:"mainCtrl"});
     }]);
 
