@@ -155,8 +155,17 @@ Y este es un ejemplo de la tira en formato png, y del gif animado:
 <h3>Futuros pasos</h3>
 <p>
 Un siguiente paso en el script sería unir todas las tiras para formar una sola imagen. Examinando el código de spritify (y esta es una de las grandes ventajas del software libre!) vemos que este plugin lo que hace es hacer llamadas imagemagick por linea de comandos.
-No se requiere demasiado trabajo para copiar esta llamada y adaptarla a nuestro script, para que genere una imagen concatenada (se usarían los comandos montage y append de imagemagick). Eventualmente se puede eliminar por completo la dependencia con spritify en nuestro script.
+No se requiere demasiado trabajo para copiar esta llamada y adaptarla a nuestro script, para que genere una imagen concatenada (se usarían el comando convert con append de imagemagick). Eventualmente se puede eliminar por completo la dependencia con spritify en nuestro script.
 </p>
 
+<p>
+ En la consola, se puede probar directamente la concatenación de las tiras. el siguiente comando uniría tres tiras verticalmente para producir el sprite sheet all.png:
+</p>
+<p>
+convert -append  wave_back_sprite.png wave_front_sprite.png wave_right_sprite.png all.png
+</p>
 
+<p>
+La forma de ejecutar este comando desde python
+</p>
 
