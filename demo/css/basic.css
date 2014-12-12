@@ -1,0 +1,21 @@
+html{
+background-color: #151A27;
+color: #65C1E5;
+}
+
+button{
+ padding:10px;
+}
+
+.feedback_ok{
+  display:none;
+}
+
+
+.feedback_bad{
+  display:none;
+}
+
+.buttons_bar{
+  clear:both;
+}

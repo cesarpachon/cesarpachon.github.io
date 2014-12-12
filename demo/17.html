@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/basic.css" />
+        <link rel="stylesheet" href="css/crossword.css" />
+
+        <title>Drag</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
+    </head>
+
+    <body>
+
+        <h1>17 Recurso de desarrollo</h1>
+        <p>Desarrollar el crucigrama</p>
+        <ol>
+            <li>Describir el estudio y señalar estrategias, son algunos de los ____________ del reporte de una investigación cualitativa.</li>
+            <li>La última parte del informe corresponde a ________________.</li>
+            <li>Parte que contiene la síntesis de la investigación.</li>
+            <li>Dentro de las cualidades que se requieren para redactar un documento, se debe tener en cuenta la ortografía, narrativa, encuadre general y_______________.</li>
+            <li>Corresponde a la descripción de los procedimientos y análisis en la investigación</li>
+        </ol>
+</p>
+
+
+        <div class='feedback_ok' >well done!</div>
+            <div class='feedback_bad' >oops!</div>
+
+        <div id="crossword_container">
+        </div>
+
+
+        <div class="buttons_bar">
+            <button class='falsetrue_validate'>Validate</button>
+            <button class='falsetrue_reset'>Reset</button>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="js/crossword.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            Crossword.init(13, 13);
+            Crossword.add_word("OBJETIVOS", "horizontal", 3, 2, "1");
+            Crossword.add_word("APENDICES", "vertical", 1, 5, "2");
+            Crossword.add_word("RESUMEN", "horizontal", 8, 4, "3");
+            Crossword.add_word("REDACCION", "horizontal", 5, 3, "4");
+            Crossword.add_word("METODO", "vertical", 7, 9, "5");
+
+
+        });
+
+    </script>
+
+
+</html>

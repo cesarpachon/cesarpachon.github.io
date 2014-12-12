@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/basic.css" />
+        <link rel="stylesheet" href="css/20.css" />
+
+        <title>Drag</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
+    </head>
+
+    <body>
+
+        <h1>20 Recurso de Desarrollo</h1>
+        <p>Toma los recuadros grises y arrástralos hasta la descripción del diseño correspondiente.</p>
+
+        <div class='feedback_ok' >Muy bien!</div>
+        <div class='feedback_bad' >Inténtalo de nuevo, seguro puedes hacerlo mejor.</div>
+
+        <div id="svg_container">
+        </div>
+
+        <div class='drag_items'>
+            <div id="target1", class='drag_item ui-widget-content'>Frecuencia con que las personas compran compulsivamente en ofertas artículos que no necesitan</div>
+            <div id="target2", class='drag_item ui-widget-content'>Disponibilidad de ambientes de recreación y reservas ambientales</div>
+            <div id="target3", class='drag_item ui-widget-content'>Práctica de rutinas como reciclaje, ahorro de agua, clasificación de residuos.</div>
+            <div id="target4", class='drag_item ui-widget-content'>ncuestas sobre el conocimiento de la influencia de los PRAE (proyectos ambientales escolares) en la comunidad</div>
+        </div>
+
+
+        <div class="buttons_bar">
+            <button class='falsetrue_validate'>Validar</button>
+            <button class='falsetrue_reset'>Reiniciar</button>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="js/drag.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            Drag.initSVG("20.svg", function(){
+
+                Drag.add_droppableSVG("target1");
+                Drag.add_droppableSVG("target2");
+                Drag.add_droppableSVG("target3");
+                Drag.add_droppableSVG("target4");
+
+
+                $(".drag_item").draggable({
+                    revert: "invalid",
+                    snap: ".drop_item_svg"
+                });
+
+
+
+
+            });
+        });
+
+    </script>
+
+
+</html>
