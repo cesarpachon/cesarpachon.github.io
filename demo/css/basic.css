@@ -1,6 +1,11 @@
 html{
 background-color: #151A27;
 color: #65C1E5;
+margin: 20px 100px 0 100px;
+}
+
+p{
+
 }
 
 button{
@@ -8,11 +13,17 @@ button{
 }
 
 .feedback_ok{
+	color:darkorange;
+  padding: 20px;
+	background-color:darkgreen;
   display:none;
 }
 
 
 .feedback_bad{
+	color:darkorange;
+  padding: 20px;
+	background-color:darkred;
   display:none;
 }
 
