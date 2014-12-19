@@ -1,0 +1,137 @@
+<h2><a href="#/documents.html">Artículos:</a> <a href="#/tutorials">Tutoriales</a></h2>
+
+
+<h3>Primeros pasos con Jquery Mobile y Apache Cordova (Phonegap)</h3>
+
+<time datetime="2014-12-18">dic 2014</time>
+
+
+<h4>Introducción</h4>
+
+<p>
+Este tutorial recoje algunas notas tomadas durante el desarrollo de un pequeño proyecto personal, desarrollado con el ánimo de aprender sobre la creación de aplicaciones móbiles para android utilizando HTML5, Jquery Mobile y Apache Cordova (Phonegap).
+</p>
+
+<p>
+El código fuente del proyecto (sin los assets) está disponible en <a href="http://www.github.com/cesarpachon/cuentacuentos">github</a>.
+</p>
+
+
+<h4>Requerimientos iniciales</h4>
+
+<p>
+El proyecto es un visor de cuentos. Se tiene una colección de cuentos organizados por libros. Las páginas de cada cuento están almacenadas como imágenes PNG. cada cuento tiene asociado un archivo mp3 que debe ejecutarse mientras se pasan las páginas del mismo.
+</p>
+
+<p>
+La aplicación debe presentar el listado de todos los libros, explorar los cuentos contenidos en cada libro, pasar las páginas de cada cuento y ejecutar los archivos de audio asociados.
+</p>
+
+<h4>instalación de librerias y configuración del entorno de desarrollo</h4>
+
+<p>Es necesario instalar el SDK de Android, con al menos un emulador, y también instalar Cordova. (cordova requiere node.js instalado en el sistema)</p>
+
+<p>Se trabajó con cordoba 3.6 y el SDK de androind android (sin adt bundle), todo desde command line, en sistema operativo Ubuntu 14.</p>
+<p>como editor se seleccionó <a href="http://lighttable.com/">Lightable</a>, por su sencillez y bajo consumo de recursos.</p>
+
+<ol>
+    <li>descargar android sdk desde: <a href="https://developer.android.com/sdk/installing/index.html?pkg=tools"> https://developer.android.com/sdk/installing/index.html?pkg=tools</a>:
+        <code>
+        cd ~/Downloads<br>
+        wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz<br>
+        sudo mv ~/Downloads/android-sdk_r23.0.2-linux.tgz /opt/<br>
+        cd /opt<br>
+        sudo tar -xvf android-sdk_r23.0.2-linux.tgz<br>
+        sudo chown USER *<br>
+        cd android-sdk-linux<br>
+            </code>
+    </li>
+
+    <li>instalar <a href="https://developer.android.com/sdk/installing/adding-packages.html">android sdk</a>:
+        <code>
+        cd /opt/android-sdk-linux/tools<br>
+        sudo ./android
+        </code>
+
+        <p>Esto abre una GUI de configuración, seguir las instrucciones de la pagina para instalar dependencias.</p>
+    </li>
+
+    <li>Instalar <a href="http://cordova.apache.org/docs/en/4.0.0//guide_cli_index.md.html#The%20Command-Line%20Interface">cordoba 3.6 cli</a> (Command Line Interface):
+        <code>
+            sudo npm install -g cordova
+        </code>
+        <a href="http://www.gaggl.com/2014/04/apache-cordova-development-environment-install-on-ubuntu/">(ver referencia)</a>
+    </li>
+
+    <li>
+        Agregar ANDROID_PATH al bashrc (vim .zshrc si se usa oh-my-shell..):
+        <code>
+            vim ~/.bashrc
+        </code>
+        y agregar:
+        <code>
+             #AndroidDev PATH<br>
+             export PATH=${PATH}:/opt/android-sdk-linux/tools<br>
+             export PATH=${PATH}:/opt/android-sdk-linux/platform-tools
+        </code>
+        <a href="http://cdn.chrislarson.me/blog/how-use-cordova-ubuntu-build-android-apps">(ver referencia)</a>
+    </li>
+</ol>
+
+<p>En este punto, tanto android como cordova deben ser accesibles desde la linea de comandos</p>
+
+<h4>Creación del proyecto</h4>
+
+<p>Con las herramientas instaladas, es hora de crear el proyecto:</p>
+
+<ol>
+    <li>
+        <p>Crear el proyecto base:</p>
+        <code>
+            cd ~/Documents<br>
+            cordova create cuentacuentos com.test.cuentacuentos "cuentacuentos"<br>
+            cd cuentacuentos/
+        </code>
+        <p>La ejecución de este comando crea un grupo de carpetas y archivos con una aplicación mobile funcional. la estructura de las carpetas es similar a esta: </p>
+
+        <code>
+        ls -l<br>
+        config.xml<br>
+        hooks<br>
+        package.json<br>
+        platforms<br>
+        plugins<br>
+        www
+        </code>
+    </li>
+
+    <li>
+        <p>Agregar android como plataforma al proyecto</p>
+        <p>La carpeta <i>platforms</i> contiene la configuración y compilados para las diferentes plataformas a las que queramos exportar el proyecto. Por ahora está vacía, así que vamos a agregar la plataforma Android, y también agregaremos un emulador por defecto:</p>
+        <code>
+            cordova platform add android
+            android create avd -n cuentacuentos -t 1
+        </code>
+    </li>
+
+    <li>
+        Para probar que todo quedó bien, puedes ejecutar el emulador desde la carpeta del proyecto. Debe inicializarse y abrir la aplicación que acabamos de crear, en donde se verá un logo de Cordova.
+    <code>
+        cordova emulate android
+        </code>
+    </li>
+</ol>
+
+<a href="http://chrislarson.me/blog/how-use-cordova-ubuntu-build-android-apps.html">(ver referencia)</a>
+
+<h4>Implementando la aplicación</h4>
+
+<p>work in progress</p>
+
+
+<h4>Accediendo a la memoria SD</h4>
+<p>work in progress</p>
+
+<h4>Depurando en el emulador</h4>
+<p>work in progress</p>
+

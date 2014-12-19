@@ -1,9 +1,9 @@
 	BODY {
-		FONT-SIZE: 14px; 
-		COLOR: #400000; 
-		FONT-FAMILY: "omnes-pro", Verdana, Geneva, Arial, Helvetica, sans-serif, sans-serif; 
+		FONT-SIZE: 14px;
+		COLOR: #400000;
+		FONT-FAMILY: "omnes-pro", Verdana, Geneva, Arial, Helvetica, sans-serif, sans-serif;
 		BACKGROUND-COLOR: #ccbfae;
-		
+
 	  padding: 0;
 	  margin: 0;
 	  width: 100%;
@@ -29,7 +29,7 @@
 	A:link {
 		color: #4e719d;
 	}
-	A:hover , A:active 
+	A:hover , A:active
 	{
 	color: #bb7d55;
 	}
@@ -89,12 +89,12 @@
 
 	.slogan
 	{
-	FONT-SIZE: 18px; 
+	FONT-SIZE: 18px;
 	}
 
 	.slogan2
 	{
-	FONT-SIZE: 16px; 
+	FONT-SIZE: 16px;
 }
 .menu
 {
@@ -127,4 +127,13 @@ text-align:center;
 font-size:10px;
 }
 
+code {
+  margin: 10px 0 10px 0;
+  background-color: darkgray;
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  display: block;
+  box-shadow: inset 5px 5px 3px 1px black;
+}
 

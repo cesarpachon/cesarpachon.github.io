@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html ng-app="portal" ng-controller="mainCtrl">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>Cesar Pachón</title>
 
 <meta name="description" content="Software Libre y Educación virtual" />
@@ -18,7 +19,7 @@
     <script src="jsrc/img.js"></script>
 
 
-<script type="text/javascript">
+<script>
 
 'use strict';
 
@@ -47,6 +48,7 @@ var portalApp = angular.module('portal', ['ngRoute']).
             when('/tutorials/angularwizard', {templateUrl:'tutorial_angular_wizard.html', controller:"mainCtrl"}).
             when('/tutorials/momentjs', {templateUrl:'tutorial_moment_js.html', controller:"mainCtrl"}).
             when('/tutorials/blender3dsprites', {templateUrl:'tutorial_blender3d_sprites.html', controller:"mainCtrl"}).
+            when('/tutorials/jqm_cordova', {templateUrl:'tutorial_jqm_cordova.html', controller:"mainCtrl"}).
             when('/presentations', {templateUrl:'presentations.html', controller:"mainCtrl"}).
             when('/poems', {templateUrl:'poesia.html', controller:"mainCtrl"}).
             when('/cartoons', {templateUrl:'cartoons.html', controller:"mainCtrl"}).
