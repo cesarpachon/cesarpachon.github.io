@@ -24,7 +24,8 @@
 	A
 	{
 	 cursor:pointer;
-	}
+   text-decoration: none;
+  }
 
 	A:link {
 		color: #4e719d;
