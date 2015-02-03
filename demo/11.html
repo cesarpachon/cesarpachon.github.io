@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/basic.css" />
+        <link rel="stylesheet" href="css/crossword.css" />
+
+        <title>Drag</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
+    </head>
+
+    <body>
+
+        <h1>11 Recurso de desarrollo</h1>
+        <p>Desarrollar el crucigrama</p>
+        <ol>
+            <li>Corresponde a la síntesis del trabajo</li>
+            <li>Parte del cuerpo del trabajo que contiene gráficas</li>
+            <li>Sección donde se relacionan las fuentes de información consultadas</li>
+            <li>Sección donde se discuten los resultados (invertido)</li>
+            <li>Sección del trabajo que contiene el tema del trabajo, investigadores, colaboradores, fecha, entre otros</li>
+        </ol>
+</p>
+
+        <div class='feedback_ok' >well done!</div>
+            <div class='feedback_bad' >oops!</div>
+
+        <div id="crossword_container">
+        </div>
+
+
+        <div class="buttons_bar">
+            <button class='falsetrue_validate'>Validate</button>
+            <button class='falsetrue_reset'>Reset</button>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="js/crossword.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            Crossword.init(11, 13);
+            Crossword.add_word("RESUMEN", "horizontal", 2, 2, "1");
+            Crossword.add_word("RESULTADO", "vertical", 2, 2, "2");
+            Crossword.add_word("SAICNEREFER", "horizontal", 7, 1, "3");
+            Crossword.add_word("DISCUSION", "horizontal", 7, 2, "4");
+            Crossword.add_word("PORTADA", "horizontal", 9, 1, "5");
+
+
+        });
+
+    </script>
+
+
+</html>
