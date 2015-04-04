@@ -161,11 +161,29 @@ No se requiere demasiado trabajo para copiar esta llamada y adaptarla a nuestro 
 <p>
  En la consola, se puede probar directamente la concatenación de las tiras. el siguiente comando uniría tres tiras verticalmente para producir el sprite sheet all.png:
 </p>
-<p>
+  <code>
 convert -append  wave_back_sprite.png wave_front_sprite.png wave_right_sprite.png all.png
-</p>
+</code>
 
 <p>
-La forma de ejecutar este comando desde python
+La forma de ejecutar este comando desde python es crear un array con el comando, modificadores y parámetros, e invocando subprocess.call:
 </p>
 
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%">paths <span style="color: #333333">=</span> []
+paths<span style="color: #333333">.</span>append(<span style="background-color: #fff0f0">&quot;convert&quot;</span>)
+paths<span style="color: #333333">.</span>append(<span style="background-color: #fff0f0">&quot;-append&quot;</span>)
+
+<span style="color: #888888">#invocar esta linea en cada llamada a renderStripAnim:</span>
+paths<span style="color: #333333">.</span>append(bpy<span style="color: #333333">.</span>path<span style="color: #333333">.</span>abspath(path))
+
+paths<span style="color: #333333">.</span>append(bpy<span style="color: #333333">.</span>path<span style="color: #333333">.</span>abspath(<span style="background-color: #fff0f0">&quot;//all.png&quot;</span>))
+subprocess<span style="color: #333333">.</span>call(paths)
+</pre></td></tr></table></div>
