@@ -1,0 +1,48 @@
+:set number #enable line numbering
+
+:set tabstop=2 #set tab size
+
+:set nowrap #disable wrapping
+
+#use vi mode in the shell
+set -o vi #for bash
+bindkey -v #for zshell
+
+vit (Visually select In Tag) #select content inside a tag
+
+%s/foo/bar/g #replace in the whole document
+
+% = move to matching brace
+
+:set mouse:a
+
+
+///vim plugins and addons..
+
+-----------
+nice color schema: https://github.com/jnurmine/Zenburn
+
+cd ~/.vim
+mkdir colors
+cd colors
+wget https://raw.githubusercontent.com/jnurmine/Zenburn/master/colors/zenburn.vimexport TERM=xterm-256color
+
+ Edited ~/.vimrc to add the following:
+    set t_Co=256
+    set background=dark
+    colors zenburn
+-----------------
+
+NERD_tree.vim: for a file listing/ide-like tree
+https://github.com/scrooloose/nerdtree
+
+pre: requires pathongen :(
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+added to vimrc:
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+execute with :NERDTree
+

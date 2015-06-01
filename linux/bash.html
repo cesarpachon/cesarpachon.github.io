@@ -1,0 +1,33 @@
+//download a whole youtube playlist as mp3 files:
+youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
+
+GREP
+simple use of grep:
+grep -n search_string files //ej: grep -n main *.cpp
+//list files that contains some string (only .c and .h in this example) -w forces exact word match.
+grep --include=\*.{c,h} -rnw './' -e "your_search_string"
+
+#concatenate two mp3 files.
+mp3wrap destination.mp3 sources.mp3
+#example: source1.mp3 and source2.mp3 into destination mp3: mp3wrap destination.mp3 source*.mp3
+
+ install fonts
+sudo apt-get install fonts-cmu
+sudo apt-get install --reinstall ttf-mscorefonts-installer
+
+delete the lines of a text file from the given line number:
+sed -i '300000,$d' LearnogramSpark15m.log
+
+encode and decode binary files as base64
+ uuencode -m hola.txt  hola.base64  > hola.base64
+uudecode -o hola2.txt hola.base64
+
+ENVIRONMENT VARS:
+printenv                   #print all the global env.vars (just "set" prints both global and local)
+echo $var_name             #print a var by name
+export var_name=value      #export a var globally. just assign to create a local var (no export)
+unset var_name             #remove the var
+~/.bash_profile            #edit this file to persist changes for the given user
+/etc/environment           #edit this file to persist changes for all the users
+how to add to .bashrc:
+export PATH=$PATH:NEW_PATH
