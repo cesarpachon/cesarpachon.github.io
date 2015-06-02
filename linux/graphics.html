@@ -1,0 +1,17 @@
+<h2>Graphics and boot</h2>
+<p>
+reset lightdm: <br>
+sudo service lightdm stop
+</p>
+
+<h3>Grub: boot</h3>
+
+<p>
+to remove the graphic splashs on linux startup, press "e" in grub to edit, change from this: 
+<br>
+linux    /boot/vmlinuz-3.16.0-28-generic root=UUID=32939def-1f4a-4134-9b56-bed2319a9216 ro   quiet splash
+<br>
+to this:<br>
+
+ linux    /boot/vmlinuz-3.16.0-28-generic root=UUID=32939def-1f4a-4134-9b56-bed2319a9216 ro  nosplash --verbose text
+</p>
