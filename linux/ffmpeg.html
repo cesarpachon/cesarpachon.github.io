@@ -1,4 +1,17 @@
+<h1>video processing: ffmpeg</h1>
+	
 
-	Convert .avi to mpeg for dvd players (http://www.catswhocode.com/blog/19-ffmpeg-commands-for-all-needs)
+<p>Convert .avi to mpeg for dvd players (http://www.catswhocode.com/blog/19-ffmpeg-commands-for-all-needs)
+</p>
 
+<code>
 ffmpeg -i source_video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 finale_video.mpeg
+</code>
+
+<p>
+limit the size of the output, in bytes. i.e, 4.7GB: 
+</p>
+
+<p>
+-fs 5000000000 
+</p>

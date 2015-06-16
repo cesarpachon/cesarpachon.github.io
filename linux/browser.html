@@ -70,3 +70,16 @@ sr piratebay natty narwhal
 <p>
 pirate-get --color -c [category] [query]
 </p>
+
+<h3>download a complete website with wget</h3>
+
+wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --html-extension \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains website.org \
+     --no-parent \
+	page
