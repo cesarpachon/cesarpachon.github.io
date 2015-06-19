@@ -1,0 +1,197 @@
+<h2>Automatic Generation of animated 2D sprites using blender and Python</h2>
+<p>ago-2014</p>
+
+<h3>Intro</h3>
+<p>
+
+La generación de sprites (tiras de imágenes 2D con una secuencia de animación)
+    a partir un modelo de Blender3D tipicamente se realizaba utilizando la exportación de cada frame a un archivo png independiente,
+    y luego utilizando algùn programa externo, como GIMP donde se importan los frames independientes como layers,
+    y se usa un plugin especial para armar la tira del sprite.
+</p>
+
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/IouWf61wC6o" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+    Esta forma de producir el sprite es demasiado manual, y para un juego con varias decenas de personajes donde se necesite generar sprites no solo para cada animaciòn, sino por cada una de las vistas posibles, se convierte rápidamente en una soluciòn insostenible.
+</p>
+
+<h3>Scripts de Python para Blender</h3>
+<p>
+Blender 3D tiene la capacidad de ser controlado a través de scripts de python. Existen por lo tanto muchos plugins y scripts para Blender que permiten adaptarlo a todo tipo de necesidades.
+    Una búsqueda en internet arrojará rápidamente varias opciones de scripts para generar sprites, uno de ellos es <a href="http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Render/Spritify">spritify.py</a>, quien tiene la caracterìstica de estar integrado con el sistema de plugins de Blender:
+</p>
+
+
+<img src="img/blender3d_sprites_spritify_options.png" width="450px" onclick="CargarFoto('img/blender3d_sprites_spritify_options.png', 1600, 900);"/>
+
+<p>
+El plugin debe ser descargado de la pagina (es un solo archivo .py) y luego, desde el panel de <strong>user preferences</strong> de Blender, se selecciona la opción de install addon from file.
+</p>
+
+<p>
+En spritify, un panel nuevo es añadido a la ventana de render, en donde se puede definir la ruta del spritesheet y el número de tiles que va a permitir horizontal y verticalmente.
+    Esto es genial, pero una vez más: realizar una configuración manual para cada una de las posibles combinaciones de animaciones y vistas no es fácil.
+</p>
+
+<p>
+    <strong>Importante:</strong> Spritify utiliza la librería ImageMagick, que se instala en linux ubuntu usando el siguiente comando:
+</p>
+<p>
+    sudo apt-get install imagemagick
+</p>
+
+<p>
+    Podemos aprovechar la versatilidad de Blender para que de manera automática configure spritify y genere el render para cada animación y cada cámara. Supongamos que se tienen las siguientes animaciones:
+    <p>
+
+<ol>
+    <li>walk: frames 1 al 8</li>
+    <li>idle1: frames 11 al 31</li>
+    <li>idle2: frames 31 al 51</li>
+    <li>wave: frames 51 al 71</li>
+</ol>
+
+
+<p>Si a esto se le suman cuatro vistas ("front", "back", "right", "left") requerimos producir 16 tiras de sprites, cada una con longitud diferente.
+    Hay varias opciones para nuestra estrategia de automatización. En este caso, usaremos una configuración con cuatro cámaras predefinidas, que nuestro script irá activando secuencialmente y disparando tanto el render de Blender como el comando de spritify:
+</p>
+
+
+<img src="img/blender3d_spritify_cameras_setup.png" width="450px" onclick="CargarFoto('img/blender3d_spritify_cameras_setup.png', 812, 537);"/>
+
+
+<p>
+las cámaras se ubicaron en posiciones estratégicas y se configuraron de tipo "ortographic".
+</p>
+
+
+<p>
+    Ahora es tiempo de crear el script:
+</p>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">bpy</span>
+
+_sceneName <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Scene&quot;</span>
+_scene <span style="color: #333333">=</span> bpy<span style="color: #333333">.</span>data<span style="color: #333333">.</span>scenes[_sceneName]
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">renderStripAnim</span>(prefix, frameini, frameend, framestep):
+    _scene<span style="color: #333333">.</span>spritesheet<span style="color: #333333">.</span>tiles <span style="color: #333333">=</span> ((frameend <span style="color: #333333">-</span> frameini <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">/</span> framestep)<span style="color: #333333">+</span>((frameend <span style="color: #333333">-</span> frameini <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span> )<span style="color: #333333">%</span>framestep)
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;---&quot;</span> <span style="color: #333333">+</span> prefix <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;frames &quot;</span><span style="color: #333333">+</span> <span style="color: #007020">str</span>(frameini) <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;-&quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(frameend) <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; in &quot;</span><span style="color: #333333">+</span> <span style="color: #007020">str</span>(framestep) <span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot; steps. tiles: &quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(_scene<span style="color: #333333">.</span>spritesheet<span style="color: #333333">.</span>tiles))
+    _scene<span style="color: #333333">.</span>frame_start <span style="color: #333333">=</span> frameini
+    _scene<span style="color: #333333">.</span>frame_end <span style="color: #333333">=</span> frameend
+    _scene<span style="color: #333333">.</span>frame_step <span style="color: #333333">=</span> framestep
+    _scene<span style="color: #333333">.</span>render<span style="color: #333333">.</span>filepath <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;//render/&quot;</span><span style="color: #333333">+</span>prefix <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;/&quot;</span>
+    _scene<span style="color: #333333">.</span>spritesheet<span style="color: #333333">.</span>filepath <span style="color: #333333">=</span> _scene<span style="color: #333333">.</span>render<span style="color: #333333">.</span>filepath <span style="color: #333333">+</span> prefix <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;_sprite.png&quot;</span>
+    bpy<span style="color: #333333">.</span>ops<span style="color: #333333">.</span>render<span style="color: #333333">.</span>render(animation<span style="color: #333333">=</span><span style="color: #007020">True</span>)
+    bpy<span style="color: #333333">.</span>ops<span style="color: #333333">.</span>render<span style="color: #333333">.</span>spritify()
+    bpy<span style="color: #333333">.</span>ops<span style="color: #333333">.</span>render<span style="color: #333333">.</span>gifify()
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">renderAllStripAnim</span>(prefix, frameini, frameend, framestep):
+    _scene<span style="color: #333333">.</span>camera <span style="color: #333333">=</span> bpy<span style="color: #333333">.</span>data<span style="color: #333333">.</span>objects[<span style="background-color: #fff0f0">&quot;CameraFront&quot;</span>]
+    renderStripAnim(prefix<span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot;_front&quot;</span>, frameini, frameend, framestep)
+    _scene<span style="color: #333333">.</span>camera <span style="color: #333333">=</span> bpy<span style="color: #333333">.</span>data<span style="color: #333333">.</span>objects[<span style="background-color: #fff0f0">&quot;CameraRight&quot;</span>]
+    renderStripAnim(prefix<span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot;_right&quot;</span>, frameini, frameend, framestep)
+    _scene<span style="color: #333333">.</span>camera <span style="color: #333333">=</span> bpy<span style="color: #333333">.</span>data<span style="color: #333333">.</span>objects[<span style="background-color: #fff0f0">&quot;CameraLeft&quot;</span>]
+    renderStripAnim(prefix<span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot;_left&quot;</span>, frameini, frameend, framestep)
+    _scene<span style="color: #333333">.</span>camera <span style="color: #333333">=</span> bpy<span style="color: #333333">.</span>data<span style="color: #333333">.</span>objects[<span style="background-color: #fff0f0">&quot;CameraBack&quot;</span>]
+    renderStripAnim(prefix<span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot;_back&quot;</span>, frameini, frameend, framestep)
+
+
+renderAllStripAnim(<span style="background-color: #fff0f0">&quot;walk&quot;</span>, <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">8</span>, <span style="color: #0000DD; font-weight: bold">1</span>)
+renderAllStripAnim(<span style="background-color: #fff0f0">&quot;idle1&quot;</span>, <span style="color: #0000DD; font-weight: bold">11</span>, <span style="color: #0000DD; font-weight: bold">31</span>, <span style="color: #0000DD; font-weight: bold">2</span>)
+renderAllStripAnim(<span style="background-color: #fff0f0">&quot;idle2&quot;</span>, <span style="color: #0000DD; font-weight: bold">31</span>, <span style="color: #0000DD; font-weight: bold">51</span>, <span style="color: #0000DD; font-weight: bold">2</span>)
+renderAllStripAnim(<span style="background-color: #fff0f0">&quot;wave&quot;</span>, <span style="color: #0000DD; font-weight: bold">51</span>, <span style="color: #0000DD; font-weight: bold">71</span>, <span style="color: #0000DD; font-weight: bold">2</span>)
+</pre></td></tr></table></div>
+
+
+<p>
+En la parte inferior del script, se definen las llamadas al método renderAllStripAnim indicando el nombre de la animación, los frames iniciales y finales y la continuidad de los mismos.
+</p>
+<p>
+Internamente, renderAlLStripAnim se encarga de ir activando cada una de las cuatro cámaras, y para cada cámara, invoca el método renderStripAnim, quien genera el render e invoca a spritify.
+</p>
+
+<p>
+El resultado final será una carpeta render dentro de la cuál existirá una subcarpeta para cada animación. en cada subcarpeta existirán los frames individuales en formato png, la tira en formato .png y un .gif animado:
+</p>
+
+
+<img src="img/blender_spritify_folder_output.png" /img>
+
+
+<p>
+Y este es un ejemplo de la tira en formato png, y del gif animado:
+</p>
+
+<img src="img/wave_front_sprite.gif" />
+<img src="img/wave_front_sprite.png" />
+
+<h3>Futuros pasos</h3>
+<p>
+Un siguiente paso en el script sería unir todas las tiras para formar una sola imagen. Examinando el código de spritify (y esta es una de las grandes ventajas del software libre!) vemos que este plugin lo que hace es hacer llamadas imagemagick por linea de comandos.
+No se requiere demasiado trabajo para copiar esta llamada y adaptarla a nuestro script, para que genere una imagen concatenada (se usarían el comando convert con append de imagemagick). Eventualmente se puede eliminar por completo la dependencia con spritify en nuestro script.
+</p>
+
+<p>
+ En la consola, se puede probar directamente la concatenación de las tiras. el siguiente comando uniría tres tiras verticalmente para producir el sprite sheet all.png:
+</p>
+  <code>
+convert -append  wave_back_sprite.png wave_front_sprite.png wave_right_sprite.png all.png
+</code>
+
+<p>
+La forma de ejecutar este comando desde python es crear un array con el comando, modificadores y parámetros, e invocando subprocess.call:
+</p>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%">paths <span style="color: #333333">=</span> []
+paths<span style="color: #333333">.</span>append(<span style="background-color: #fff0f0">&quot;convert&quot;</span>)
+paths<span style="color: #333333">.</span>append(<span style="background-color: #fff0f0">&quot;-append&quot;</span>)
+
+<span style="color: #888888">#invocar esta linea en cada llamada a renderStripAnim:</span>
+paths<span style="color: #333333">.</span>append(bpy<span style="color: #333333">.</span>path<span style="color: #333333">.</span>abspath(path))
+
+paths<span style="color: #333333">.</span>append(bpy<span style="color: #333333">.</span>path<span style="color: #333333">.</span>abspath(<span style="background-color: #fff0f0">&quot;//all.png&quot;</span>))
+subprocess<span style="color: #333333">.</span>call(paths)
+</pre></td></tr></table></div>
