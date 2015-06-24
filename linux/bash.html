@@ -1,3 +1,6 @@
+<h1>usefull bash tools</h1>
+
+<h2>download youtube playlists</h2>
 <p>
 //download a whole youtube playlist as mp3 files:
 </p>
@@ -5,6 +8,7 @@
 youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
 <p>
 
+<h2>search and replace in files </h2>
 <p>
 GREP
 </p>
@@ -21,6 +25,16 @@ grep -n search_string files //ej: grep -n main *.cpp
 grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 </p>
 
+<p>For replace, there is also rpl:</p>
+
+<code>
+rpl -v ori_string new_string files
+</code>
+
+
+
+
+<h2>manipulate mp3</h2>
 <p>
 #concatenate two mp3 files.
 </p>
@@ -31,6 +45,7 @@ mp3wrap destination.mp3 sources.mp3
 #example: source1.mp3 and source2.mp3 into destination mp3: mp3wrap destination.mp3 source*.mp3
 </p>
 
+<h2>additional fonts for the system</h2>
 <p>
  install fonts
 </p>
@@ -40,6 +55,7 @@ sudo apt-get install fonts-cmu
 <p>
 sudo apt-get install --reinstall ttf-mscorefonts-installer
 </p>
+
 
 <p>
 delete the lines of a text file from the given line number:
