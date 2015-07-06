@@ -1,0 +1,52 @@
+//-----
+this one will save your life, if by mistake you delete both the remote and local branch: 
+git log -g
+http://stackoverflow.com/questions/19592275/git-recover-branch-deleted-on-remote-and-local-folder-deleted
+//-----
+ 
+git checkout phase_3_main //pasarse a la rama de desarrollo activa
+ 
+git up //verificar que estemos en esa rama
+ 
+git checkout -b ACTHREE-XXX //crear la nueva rama
+ 
+git push origin -u ACTHREE-XXX //enlazar la nueva rama al server
+ 
+git push origin ACTHREE-XXX //commit only changes in the given branch
+ 
+git branch -a //listar todas las ramas
+ 
+git fetch //actualizar la lista local de ramas con el estado del servidor (detecta ramas nuevas)
+ 
+git push origin --delete <branchName> //borrar rama remota
+ 
+git branch -d <branchName> //borrar rama local
+ 
+git pull //traer ramas nuevas del remoto
+ 
+git stash / git stash pop
+ 
+git diff --name-status branch1..branch2 compare two branches
+ 
+git diff branch1 branch2 -- myfile compare same file in two branches
+ 
+git diff HEAD -- file Compare a file added to stage with version in HEAD. 
+ 
+merge a specific file (two steps!): 
+git checkout <branch_destiny>
+git checkout --patch <branch_source> <file>
+ 
+git log  list the commits and comments of the current branch
+git log --pretty=oneline
+list graph, hash, author, date, subject
+git log --pretty=format:"%H %an %ar %s" --graph
+ 
+git reset HEAD^  #reset the last commit, but before a push
+git reset --hard origin/together #revert to origin, destroying local changes and files in conflict 
+ 
+git tag - a name : add a annotated tag 
+ 
+zip the files that had changed
+git archive --format zip -o changed.zip HEAD `git diff --name-only HASH`
+(from http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/)
+
