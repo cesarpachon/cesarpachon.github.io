@@ -1,52 +1,118 @@
-//-----
-this one will save your life, if by mistake you delete both the remote and local branch: 
-git log -g
+<h1>Git commands</h1>
+
+<p>
+this one will save your life, if by mistake you delete both the remote and local branch:
+</p>
+<code>
+  git log -g
+</code>
+</p>
 http://stackoverflow.com/questions/19592275/git-recover-branch-deleted-on-remote-and-local-folder-deleted
-//-----
- 
-git checkout phase_3_main //pasarse a la rama de desarrollo activa
- 
-git up //verificar que estemos en esa rama
- 
-git checkout -b ACTHREE-XXX //crear la nueva rama
- 
-git push origin -u ACTHREE-XXX //enlazar la nueva rama al server
- 
-git push origin ACTHREE-XXX //commit only changes in the given branch
- 
-git branch -a //listar todas las ramas
- 
-git fetch //actualizar la lista local de ramas con el estado del servidor (detecta ramas nuevas)
- 
-git push origin --delete <branchName> //borrar rama remota
- 
-git branch -d <branchName> //borrar rama local
- 
-git pull //traer ramas nuevas del remoto
- 
+</p>
+
+
+<p>checkout a branch:</p>
+<code>
+git checkout BRANCH_NAME
+</code>
+
+<p>create a new local branch and then upload it to the origin</p>
+<code>
+git checkout -b BRANCH_NAME
+git push origin -u BRANCH_NAME
+</code>
+
+<p>commit only changes in the given branch</p>
+<code>
+git push origin BRANCH_NAME
+</code>
+
+<p>List all available branches</p>
+<code>
+git branch -a
+</code>
+
+<p>Update the local repo with the status of all the remote branches</p>
+<code>
+git fetch
+</code>
+
+<p>Delete a remote branch</p>
+<code>
+git push origin --delete BRANCH_NAME
+</code>
+
+<p>delete a local branch</p>
+<code>
+git branch -d BRANCH_NAME
+</code>
+
+
+<p>Bring down remote branches</p>
+<code>
+git pull
+</code>
+
+<p>save/restore temporal changes into a local stack</p>
+<code>
 git stash / git stash pop
- 
-git diff --name-status branch1..branch2 compare two branches
- 
-git diff branch1 branch2 -- myfile compare same file in two branches
- 
-git diff HEAD -- file Compare a file added to stage with version in HEAD. 
- 
-merge a specific file (two steps!): 
-git checkout <branch_destiny>
-git checkout --patch <branch_source> <file>
- 
-git log  list the commits and comments of the current branch
+</code>
+
+<p>compare two branches, displaying only the names of the files that changed</p>
+<code>
+git diff --name-status branch1..branch2
+</code>
+
+<p>compare same file in two branches</p>
+<code>
+git diff branch1 branch2 -- myfile
+</code>
+
+<p>Compare a file added to stage with version in HEAD. </p>
+<code>
+git diff HEAD -- file
+</code>
+
+<p>merge a specific file (two steps!): </p>
+<code>
+git checkout branch_destiny
+git checkout --patch branch_source file
+</code>
+
+<p>list the commits and comments of the current branch</p>
+<code>
+git log
 git log --pretty=oneline
 list graph, hash, author, date, subject
 git log --pretty=format:"%H %an %ar %s" --graph
- 
-git reset HEAD^  #reset the last commit, but before a push
-git reset --hard origin/together #revert to origin, destroying local changes and files in conflict 
- 
-git tag - a name : add a annotated tag 
- 
-zip the files that had changed
-git archive --format zip -o changed.zip HEAD `git diff --name-only HASH`
-(from http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/)
+</code>
 
+<p>reset the last commit, but before a push</p>
+<code>
+git reset HEAD^
+</code>
+
+<p>revert to origin, destroying local changes and files in conflict
+</p>
+<code>
+   git reset --hard origin/branchname
+</code>
+
+
+<p>add a annotated tag </p>
+<code>
+git tag - a name
+</code>
+
+<p>zip the files that had changed</p>
+<code>
+git archive --format zip -o changed.zip HEAD `git diff --name-only HASH`
+</code>
+<p>ref: (from <a href="http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/">http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/</a>)</p>
+
+<p>update a fork with the upstream (need the upstream to had been added)</p>
+<code>
+  git fetch upstream
+  git checkout BRANCH
+  git merge upstream/BRANCH
+</code>
