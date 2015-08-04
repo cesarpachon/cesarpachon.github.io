@@ -110,9 +110,19 @@ git archive --format zip -o changed.zip HEAD `git diff --name-only HASH`
 </code>
 <p>ref: (from <a href="http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/">http://www.ls12style.co.uk/blog/2011/09/git-tip-creating-zip-of-changed-files/</a>)</p>
 
+<p>listing remotes</p>
+<code>
+git remote -v
+</code>
+
+<p>Adding a remote</p>
+<code>
+git remote add REMOTE_NAME REMOTE_URL
+</code>
+
 <p>update a fork with the upstream (need the upstream to had been added)</p>
 <code>
-  git fetch upstream
-  git checkout BRANCH
+  git fetch upstream<br>
+  git checkout BRANCH<br>
   git merge upstream/BRANCH
 </code>
