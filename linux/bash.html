@@ -1,3 +1,13 @@
+<h1>usefull bash tools</h1>
+
+
+<h2>General</h2>
+<p>Know your linux version:</p>
+<code>
+cat /etc/os-release
+</code>
+
+<h2>download youtube playlists</h2>
 <p>
 //download a whole youtube playlist as mp3 files:
 </p>
@@ -5,6 +15,7 @@
 youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
 <p>
 
+<h2>search and replace in files </h2>
 <p>
 GREP
 </p>
@@ -21,6 +32,16 @@ grep -n search_string files //ej: grep -n main *.cpp
 grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 </p>
 
+<p>For replace, there is also rpl:</p>
+
+<code>
+rpl -v ori_string new_string files
+</code>
+
+
+
+
+<h2>manipulate mp3</h2>
 <p>
 #concatenate two mp3 files.
 </p>
@@ -31,6 +52,7 @@ mp3wrap destination.mp3 sources.mp3
 #example: source1.mp3 and source2.mp3 into destination mp3: mp3wrap destination.mp3 source*.mp3
 </p>
 
+<h2>additional fonts for the system</h2>
 <p>
  install fonts
 </p>
@@ -40,6 +62,7 @@ sudo apt-get install fonts-cmu
 <p>
 sudo apt-get install --reinstall ttf-mscorefonts-installer
 </p>
+
 
 <p>
 delete the lines of a text file from the given line number:
@@ -58,9 +81,9 @@ encode and decode binary files as base64
 uudecode -o hola2.txt hola.base64
 </p>
 
-<p>
+<h2>
 ENVIRONMENT VARS:
-</p>
+</h2>
 <p>
 printenv                   #print all the global env.vars (just "set" prints both global and local)
 </p>
@@ -85,3 +108,8 @@ how to add to .bashrc:
 <p>
 export PATH=$PATH:NEW_PATH
 </p>
+
+<h2>GCC: coloring output</h2>
+<code>
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+</code>
