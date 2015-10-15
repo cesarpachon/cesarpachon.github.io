@@ -15,3 +15,7 @@ limit the size of the output, in bytes. i.e, 4.7GB:
 <p>
 -fs 5000000000 
 </p>
+
+<h2>recording video from webcam into file (no audio)</h2>
+<p>ffmpeg -f oss -i /dev/dsp -f video4linux2 -s 320x240 -i /dev/video0 out.mpg
+</p>
