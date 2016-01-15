@@ -17,5 +17,20 @@ http://xmodulo.com/sniff-http-traffic-command-line-linux.html
 <p>
 sudo httpry -i <network-interface> 
 </p>
+
+<h2>simulate low network connections</h2>
+
+<p>
+sudo tc qdisc add dev wlan0 root netem delay 100ms
+</p>
+<p>
+wlan0 is the name of the device.
+</p>
+<p>
+netem is just any name to identify the new set of rules.
+</p>
+<p>
+sudo tc qdisc delete dev wlan0 root netem 
+</p>
 </body>
 </html>
