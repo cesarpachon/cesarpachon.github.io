@@ -18,7 +18,7 @@ git checkout BRANCH_NAME
 
 <p>create a new local branch and then upload it to the origin</p>
 <code>
-git checkout -b BRANCH_NAME
+  git checkout -b BRANCH_NAME<br>
 git push origin -u BRANCH_NAME
 </code>
 
@@ -70,22 +70,28 @@ git diff branch1 branch2 -- myfile
 
 <p>Compare a file added to stage with version in HEAD. </p>
 <code>
-git diff HEAD -- file
-git diff HEAD^^ HEAD file
+git diff HEAD -- file<br>
+git diff HEAD^^ HEAD file<br>
 git diff HEAD~2 HEAD file 
+</code>
+
+<p>See the detailed history and changes of a single file </p>
+
+<code>
+git log --follow -p FILENAME
 </code>
 
 <p>merge a specific file (two steps!): </p>
 <code>
-git checkout branch_destiny
+git checkout branch_destiny<br>
 git checkout --patch branch_source file
 </code>
 
 <p>list the commits and comments of the current branch</p>
 <code>
-git log
-git log --pretty=oneline
-list graph, hash, author, date, subject
+git log<br>
+git log --pretty=oneline<br>
+list graph, hash, author, date, subject<br>
 git log --pretty=format:"%H %an %ar %s" --graph
 </code>
 
