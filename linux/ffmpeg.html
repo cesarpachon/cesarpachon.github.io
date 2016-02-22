@@ -20,7 +20,7 @@ limit the size of the output, in bytes. i.e, 4.7GB:
 <p>ffmpeg -f oss -i /dev/dsp -f video4linux2 -s 320x240 -i /dev/video0 out.mpg
 </p>
 
-<p>Normalize the volume</p>
+<h2>Normalize the volume</h2>
 <ol>
 	<li> check the output of this file: <br><code>ffmpeg -i FILE -af "volumedetect" -f null /dev/null</code><br>
 	if max volume is less than zero, that is the amount you need for the next step. (i.e: -12dB)
@@ -28,3 +28,5 @@ limit the size of the output, in bytes. i.e, 4.7GB:
 <li>ffmpeg -i FILE -af "volume=12.0dB"  OUTFILE</li>
 </ol>
 <a href="http://superuser.com/questions/323119/how-can-i-normalize-audio-using-ffmpeg/">reference</a>
+
+<p>also, you can use a sepparate tool named normalize-audio (http://askubuntu.com/questions/331736/normalize-ogg-audio-files-with-the-command-line)</p>
