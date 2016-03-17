@@ -41,6 +41,9 @@ rpl -v ori_string new_string files
 <h2>count lines of code</h2>
 <p>print a list of files of a subdir along with the number of lines for each one</p>
 <code>find . -type f -name \*.c -exec wc -l {} \;</code>
+<p>Just print the grand total</p>
+<code>find . -name \*.js   -exec cat {} \; | wc -l</code>
+
 
 <h2>manipulate mp3</h2>
 <p>
