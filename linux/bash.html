@@ -38,8 +38,9 @@ grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 rpl -v ori_string new_string files
 </code>
 
-
-
+<h2>count lines of code</h2>
+<p>print a list of files of a subdir along with the number of lines for each one</p>
+<code>find . -type f -name \*.c -exec wc -l {} \;</code>
 
 <h2>manipulate mp3</h2>
 <p>
