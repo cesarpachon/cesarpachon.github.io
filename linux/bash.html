@@ -35,7 +35,9 @@ grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 <p>For replace, there is also rpl:</p>
 
 <code>
-rpl -v ori_string new_string files
+rpl -v ori_string new_string files<br>
+//replace recursively on html files 
+rpl -R -x'.html' "old_string" "new_string" ./
 </code>
 
 <h2>count lines of code</h2>
