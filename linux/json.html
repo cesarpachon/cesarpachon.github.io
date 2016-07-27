@@ -39,6 +39,12 @@ cat sample.json | jq '.a'
 }
 </code>
 
-
+<p>print only the keys of a part of the json:</p>
+<code>
+  cat sample.json | jq '.a | keys' 
+  [
+  "data"
+  ]
+</code>
 </body>
 </html>
