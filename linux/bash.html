@@ -25,6 +25,10 @@ simple use of grep:
 <p>
 grep -n search_string files //ej: grep -n main *.cpp
 </p>
+<p>list files of a given extension recursively, no exact match</p>
+<code>
+  grep -rn --include="*.js" keyword_to_search .
+</code>
 <p>
 //list files that contains some string (only .c and .h in this example) -w forces exact word match.
 </p>
