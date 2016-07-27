@@ -1,0 +1,44 @@
+<html>
+<body>
+<h1>JSON processing with jq</h1>
+
+<p>just pretty-print:</p>
+
+<code>cat file.json | jq </code>
+
+<p>example:</p>
+<code>
+cat sample.json | jq
+{
+  "a": {
+    "data": "hello"
+  },
+  "b": {
+    "data": "there"
+  }
+}
+</code>
+
+<p>print array of first-level keys:</p>
+<code> cat file.json | jq 'keys'</code>
+
+<p>example:</p>
+<code>
+cat sample.json | jq 'keys'
+[
+  "a",
+  "b"
+]
+</code>
+
+<p>print only a part of the json:</p>
+<code>
+cat sample.json | jq '.a'
+{
+  "data": "hello"
+}
+</code>
+
+
+</body>
+</html>
