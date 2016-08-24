@@ -9,6 +9,9 @@ espeak "what is your name?" --stdout >> what_is_your_name.wav
 <p>..and convert to mp3 and ogg in batch mode:</p>
 <code>
 for f in *.wav; do ffmpeg -i "$f" -c:a libmp3lame -q:a 2 "${f/%wav/mp3}" -c:a libvorbis -q:a 4 "${f/%wav/ogg}"; done
+<br>
+or:<br>
+for file in *.ogg; do ffmpeg -i "$file" "${file%.ogg}".mp3; done 
 </code>
 
 <h2>video processing: ffmpeg</h2>
