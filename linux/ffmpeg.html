@@ -46,3 +46,11 @@ limit the size of the output, in bytes. i.e, 4.7GB:
 <a href="http://superuser.com/questions/323119/how-can-i-normalize-audio-using-ffmpeg/">reference</a>
 
 <p>also, you can use a sepparate tool named normalize-audio (http://askubuntu.com/questions/331736/normalize-ogg-audio-files-with-the-command-line)</p>
+
+
+<h2>mixing different sound files in a single one</h2>
+<p>this command takes care of the differences in length, keeping the total length equal to the longest one <a href="http://stackoverflow.com/questions/14498539/how-to-overlay-two-audio-files-using-ffmpeg#14528482">source</a></p>
+
+<code>
+ffmpeg -i flute_long.ogg -i gallop.ogg -i wind.ogg -filter_complex "[0:0][1:0] amix=inputs=3:duration=longest"  main.ogg
+</code>
