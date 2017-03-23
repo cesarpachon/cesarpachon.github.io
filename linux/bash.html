@@ -7,14 +7,6 @@
 cat /etc/os-release
 </code>
 
-<h2>download youtube playlists</h2>
-<p>
-//download a whole youtube playlist as mp3 files:
-</p>
-<p>
-youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
-<p>
-
 <h2>search and replace in files </h2>
 <p>
 GREP
@@ -42,6 +34,12 @@ grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 rpl -v ori_string new_string files<br>
 //replace recursively on html files <br>
 rpl -R -x'.html' "old_string" "new_string" ./
+</code>
+
+<h2>Rename files</h2>
+Use rename with vim replace expression: 
+<code>
+  rename -v 's/cards/trials/' *.js
 </code>
 
 <h2>count lines of code</h2>
@@ -152,3 +150,12 @@ export PATH=$PATH:NEW_PATH
 <code>
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 </code>
+
+
+<h2>download youtube playlists</h2>
+<p>
+//download a whole youtube playlist as mp3 files:
+</p>
+<p>
+youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
+<p>
