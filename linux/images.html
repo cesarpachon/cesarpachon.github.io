@@ -10,6 +10,8 @@
 <p>resize all images in a folder (mogrify to overwrite, convert to save as new)</p>
 <code>mogrify -resize 200 *.png</code>
 
+<p>convert all jpg images in png, keeping the originals: </p>
+<code>  mogrify -format png *.jpg</code>
 
 <p>merge: mix images with alpha channel to produce a single one</p>
 <code>convert assets/skin/skin1.png assets/hair/hair0.png assets/face/face1.png  -flatten out.png</code>
