@@ -46,5 +46,9 @@ cat sample.json | jq '.a'
   "data"
   ]
 </code>
+  <p>compare two JSON files side by side:</p>
+  <code>
+    diff --side-by-side <(jq -S . A.json) <(jq -S . B.json)
+  </code>
 </body>
 </html>
