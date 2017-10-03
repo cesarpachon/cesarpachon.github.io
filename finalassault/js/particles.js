@@ -64,9 +64,12 @@ FS.Particles.prototype.fire = function(pos, dir, num, l1, r1, l2, r2){
     p.speed = 0.1+ 0.1*Math.random();
     p.life = 500 + 500*Math.random();
     p.life_acum = 0; 
-    p.dir.x = p1.x; //+ ((Math.random()-0.5));
-    p.dir.y = p1.y; //+ ((Math.random()-0.5));
-    p.dir.z = p1.z; //+ ((Math.random()-0.5));
+    p.dir.x = p1.x+ ((Math.random()-0.5));
+    p.dir.y = p1.y+ ((Math.random()-0.5));
+    p.dir.z = p1.z+ ((Math.random()-0.5));
+
+    p.root.position.copy(p1);
+
     p.dir.normalize();
   }
   ++i;
