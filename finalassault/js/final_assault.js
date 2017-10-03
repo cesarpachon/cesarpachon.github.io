@@ -1,4 +1,5 @@
 (function($, THREE, FS){
+"use strict";
 
   /**
    * @constructor
@@ -8,7 +9,6 @@
     //THREE.js root
     this.root = null;
     this.ft = 0; 
-    this.setStatus("enter_idle");
   };
 
   /*
@@ -66,6 +66,8 @@
             _self.parts.foot_right.position.set(0, -7, -9);
        _self.parts.leg_lower_right.position.set(0, -10, 6);
        _self.parts.leg_upper_right.position.set(6, 0, 0);
+
+      _self.setStatus("enter_idle");
       cb();
     });
   };
@@ -87,10 +89,18 @@
    */ 
   FS.Robot.prototype.onForward = function(){
    if(this.status === "idle"){
-     this.setStatus("entering_walking");  
+     this.setStatus("enter_walking");  
     }
   };
 
+  /**
+   * onStop
+   */ 
+  FS.Robot.prototype.onStop = function(){
+    if(this.status === "walking" || this.status === "enter_walking"){
+      this.setStatus("enter_idle");
+    }
+  };
 
   /**
    * enter a new status
@@ -98,12 +108,24 @@
   FS.Robot.prototype.setStatus = function(status){
     console.log("setStatus " + status); 
     if(status === "enter_idle"){
-      this.elapsed_time = 0;
+      this.enterIdle();
+     /* this.elapsed_time = 0;
       this.total_time = 10;
       this.next_status = "idle";
+      */
     }else if(status === "idle"){
       this.elapsed_time = 0; 
       this.total_time = 3000;
+      this.next_status = null; //indicates loop
+    }
+    else if(status === "enter_walking"){
+      this.enterWalking();
+      /*this.elapsed_time = 0;
+      this.total_time = 20;
+      this.next_status = "walking";*/
+    }else if(status === "walking"){
+      this.elapsed_time = 0; 
+      this.total_time = 2000;
       this.next_status = null; //indicates loop
     }
     this.status = status;
@@ -114,6 +136,7 @@
    * update
    */
   FS.Robot.prototype.update = function(dt){
+
     //handling walking status
     this.elapsed_time+=dt;
     if(this.total_time){
@@ -133,14 +156,21 @@
       //no total_time means looping, so no t is computed
     }
 
-    if(this.status === "enter_idle"){
+    /*if(this.status === "enter_idle"){
       this.updateEnterIdle(dt);
-    }
-    else if(this.status === "idle"){
+    }*/
+    if(this.status === "idle"){
       this.updateIdle(dt);
+    }
+    /*else if(this.status === "enter_walking"){
+      this.updateEnterWalking(dt);
+    }*/
+    else if(this.status === "walking"){
+      this.updateWalking(dt);
     }
     this.updateFiring(dt);
   };
+
 
   /**
    *
@@ -171,10 +201,121 @@
   };
 
   /**
+   * updateEnterWalking 
+   */ 
+  FS.Robot.prototype.enterWalking = function(){
+    var _self = this; 
+    var ini = {
+      axis_y: this.parts.axis.position.y, 
+      leg_upper_left_rotx : this.parts.leg_upper_left.rotation.x, 
+      leg_lower_left_rotx : this.parts.leg_lower_left.rotation.x, 
+      foot_left_rotx: this.parts.foot_left.rotation.x, 
+      
+      leg_upper_right_rotx : this.parts.leg_upper_right.rotation.x, 
+      leg_lower_right_rotx : this.parts.leg_lower_right.rotation.x, 
+      foot_right_rotx : this.parts.foot_right.rotation.x 
+    };
+    var end = {
+      axis_y: 0, 
+      leg_upper_left_rotx : 0, 
+      leg_lower_left_rotx : 0, 
+      foot_left_rotx: 0.5,
+      
+      leg_upper_right_rotx : 0, 
+      leg_lower_right_rotx : 0, 
+      foot_right_rotx : -0.5 
+    };
+    var tween = new TWEEN.Tween(ini)
+      .to(end, 200)
+      .onUpdate(function(){
+        _self.parts.axis.position.y =ini.axis_y; 
+        _self.parts.leg_upper_left.rotation.x = ini.leg_upper_left_rotx; 
+        _self.parts.leg_lower_left.rotation.x = ini.leg_lower_left_rotx; 
+        _self.parts.foot_left.rotation.x = ini.foot_left_rotx; 
+        _self.parts.leg_upper_right.rotation.x = ini.leg_upper_right_rotx; 
+        _self.parts.leg_lower_right.rotation.x = ini.leg_lower_right_rotx; 
+        _self.parts.foot_right.rotation.x = ini.foot_right_rotx;
+      })
+      .onComplete(function(){
+        _self.setStatus("walking");
+      })
+      .start();
+  };
+
+  /**
+   * updateWalking 
+   */ 
+  FS.Robot.prototype.updateWalking = function(){
+
+
+    //convert the 0..1 factor into an angle
+    var angle1  = this.t * (4.0*Math.PI);
+    //move the axis up-down
+    this.parts.axis.position.y = Math.sin(angle1)*3.0; 
+    
+    var angle  = this.t * (2*Math.PI);
+    var sin_angle = Math.sin(angle);
+    var cos_angle = Math.cos(angle);
+    
+    //compensate in legs (forward kinematic, sorry, no time for IK..)
+    this.parts.leg_upper_left.rotation.x = sin_angle*1.0; 
+    this.parts.leg_lower_left.rotation.x = -sin_angle*1.0; 
+    this.parts.foot_left.rotation.x = cos_angle*0.5; 
+    
+    var t2 = this.t + 0.5;
+    if(t2>1.0) t2 -= 1.0;
+    
+    //var t2 = this.t;
+    
+    var angle2  =  t2  * (2.0*Math.PI);
+    var sin_angle2 = Math.sin(angle2 );
+    var cos_angle2 = Math.cos(angle2 );
+    this.parts.leg_upper_right.rotation.x = sin_angle2*1.0; 
+    this.parts.leg_lower_right.rotation.x = -sin_angle2*1.0; 
+    this.parts.foot_right.rotation.x = cos_angle2*0.5; 
+    
+    };
+
+  /**
    * updateEnterIdle 
    */ 
-  FS.Robot.prototype.updateEnterIdle = function(dt){
-    
+  FS.Robot.prototype.enterIdle = function(){
+    var _self = this; 
+    var ini = {
+      axis_y: this.parts.axis.position.y, 
+      leg_upper_left_rotx : this.parts.leg_upper_left.rotation.x, 
+      leg_lower_left_rotx : this.parts.leg_lower_left.rotation.x, 
+      foot_left_rotx: this.parts.foot_left.rotation.x, 
+      
+      leg_upper_right_rotx : this.parts.leg_upper_right.rotation.x, 
+      leg_lower_right_rotx : this.parts.leg_lower_right.rotation.x, 
+      foot_right_rotx : this.parts.foot_right.rotation.x 
+    };
+    var end = {
+      axis_y: 0, 
+      leg_upper_left_rotx : 0, 
+      leg_lower_left_rotx : 0, 
+      foot_left_rotx: 0, 
+      
+      leg_upper_right_rotx : 0, 
+      leg_lower_right_rotx : 0, 
+      foot_right_rotx : 0 
+    };
+    var tween = new TWEEN.Tween(ini)
+      .to(end, 200)
+      .onUpdate(function(){
+        _self.parts.axis.position.y =ini.axis_y; 
+        _self.parts.leg_upper_left.rotation.x = ini.leg_upper_left_rotx; 
+        _self.parts.leg_lower_left.rotation.x = ini.leg_lower_left_rotx; 
+        _self.parts.foot_left.rotation.x = ini.foot_left_rotx; 
+        _self.parts.leg_upper_right.rotation.x = ini.leg_upper_right_rotx; 
+        _self.parts.leg_lower_right.rotation.x = ini.leg_lower_right_rotx; 
+        _self.parts.foot_right.rotation.x = ini.foot_right_rotx;
+      })
+      .onComplete(function(){
+        _self.setStatus("idle");
+      })
+      .start();
   };
 
   /**
@@ -197,6 +338,5 @@
     this.parts.leg_lower_right.rotation.x = -sin_angle*0.05; 
     this.parts.foot_right.rotation.x = -sin_angle*0.05; 
   };
-  
 
 })($, THREE, FS);

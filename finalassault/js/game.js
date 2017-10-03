@@ -1,3 +1,4 @@
+"use strict"; 
 //let's create a "Final Assault" global namespace for hold our stuff..
 window.FS = {};
 
@@ -5,7 +6,6 @@ window.FS = {};
 
 // Initialize variables.
 var scene, camera, renderer, WIDTH, HEIGHT;
-var angle = 0;
 var radius = 10;
 var cube;
 var cos = Math.cos;
@@ -82,12 +82,15 @@ function update(){
   keyboard.update();
   if(keyboard.pressed("W")){
     robot.onForward();
+  }else{
+    robot.onStop();
   }
   if(keyboard.pressed("space")){
     robot.fire();
   }
-  var dt  = this.clock.getDelta();
+  var dt  = clock.getDelta();
   robot.update(dt*1000);//seconds to millis
+  TWEEN.update();
 }
 
 
