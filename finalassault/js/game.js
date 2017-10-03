@@ -91,6 +91,8 @@ function update(){
   var dt  = clock.getDelta();
   robot.update(dt*1000);//seconds to millis
   TWEEN.update();
+  controls.target.copy(robot.root.position);
+  controls.update();
 }
 
 

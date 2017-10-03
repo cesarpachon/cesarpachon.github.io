@@ -1,6 +1,8 @@
 (function($, THREE, FS){
 "use strict";
 
+var MAX_SPEED = 1;
+
   /**
    * @constructor
    */ 
@@ -9,6 +11,9 @@
     //THREE.js root
     this.root = null;
     this.ft = 0; 
+    this.speed = 0;
+    //this is forward.. due to the orientation of the geometry
+    this.direction = new THREE.Vector3(0, 0, -1);
   };
 
   /*
@@ -156,19 +161,19 @@
       //no total_time means looping, so no t is computed
     }
 
-    /*if(this.status === "enter_idle"){
-      this.updateEnterIdle(dt);
-    }*/
+    //handling procedural animations
     if(this.status === "idle"){
       this.updateIdle(dt);
     }
-    /*else if(this.status === "enter_walking"){
-      this.updateEnterWalking(dt);
-    }*/
     else if(this.status === "walking"){
       this.updateWalking(dt);
     }
     this.updateFiring(dt);
+
+    //handling position updates
+    this.root.position.x += this.direction.x*this.speed*dt*0.1;
+    this.root.position.z += this.direction.z*this.speed*dt*0.1;
+
   };
 
 
@@ -206,6 +211,8 @@
   FS.Robot.prototype.enterWalking = function(){
     var _self = this; 
     var ini = {
+      speed: this.speed,
+      root_y: this.root.position.y,
       axis_y: this.parts.axis.position.y, 
       leg_upper_left_rotx : this.parts.leg_upper_left.rotation.x, 
       leg_lower_left_rotx : this.parts.leg_lower_left.rotation.x, 
@@ -216,6 +223,8 @@
       foot_right_rotx : this.parts.foot_right.rotation.x 
     };
     var end = {
+      speed: MAX_SPEED,
+      root_y: 25,
       axis_y: 0, 
       leg_upper_left_rotx : 0, 
       leg_lower_left_rotx : 0, 
@@ -228,6 +237,8 @@
     var tween = new TWEEN.Tween(ini)
       .to(end, 200)
       .onUpdate(function(){
+        _self.speed = ini.speed;
+        _self.root.position.y = ini.root_y;
         _self.parts.axis.position.y =ini.axis_y; 
         _self.parts.leg_upper_left.rotation.x = ini.leg_upper_left_rotx; 
         _self.parts.leg_lower_left.rotation.x = ini.leg_lower_left_rotx; 
@@ -282,6 +293,8 @@
   FS.Robot.prototype.enterIdle = function(){
     var _self = this; 
     var ini = {
+      speed: this.speed,
+      root_y: this.root.position.y,
       axis_y: this.parts.axis.position.y, 
       leg_upper_left_rotx : this.parts.leg_upper_left.rotation.x, 
       leg_lower_left_rotx : this.parts.leg_lower_left.rotation.x, 
@@ -292,6 +305,8 @@
       foot_right_rotx : this.parts.foot_right.rotation.x 
     };
     var end = {
+      speed: 0,
+      root_y: 21,
       axis_y: 0, 
       leg_upper_left_rotx : 0, 
       leg_lower_left_rotx : 0, 
@@ -304,6 +319,8 @@
     var tween = new TWEEN.Tween(ini)
       .to(end, 200)
       .onUpdate(function(){
+        _self.speed = ini.speed;
+        _self.root.position.y = ini.root_y;
         _self.parts.axis.position.y =ini.axis_y; 
         _self.parts.leg_upper_left.rotation.x = ini.leg_upper_left_rotx; 
         _self.parts.leg_lower_left.rotation.x = ini.leg_lower_left_rotx; 
