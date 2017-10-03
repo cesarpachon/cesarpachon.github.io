@@ -63,6 +63,7 @@ function init(event) {
   robot.init(function(err){
     if(!err){
       scene.add(robot.root);
+      scene.add(robot.particles.root);
       loop();
     }
   });

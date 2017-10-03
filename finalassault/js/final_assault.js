@@ -12,6 +12,7 @@ var MAX_SPEED = 1;
     this.root = null;
     this.ft = 0; 
     this.speed = 0;
+    this.particles = new FS.Particles(50);
   };
 
   /*
@@ -87,6 +88,7 @@ var MAX_SPEED = 1;
     this.fire_elapsed_time = 0; 
     this.fire_total_time = 1500; 
     this.firing = true; 
+    this.fired = false;
   };
 
   /**
@@ -200,6 +202,7 @@ var MAX_SPEED = 1;
    */ 
   FS.Robot.prototype.updateFiring = function(dt){
     //handle firing status
+    this.particles.update(dt);
     if(this.firing){
       this.fire_elapsed_time  += dt; 
       if(this.fire_elapsed_time < this.fire_total_time){
@@ -216,6 +219,12 @@ var MAX_SPEED = 1;
       robot.parts.neck.rotation.y = 2*this.ft * angle;  
       robot.parts.head.rotation.z = 2*this.ft * angle;  
     }else{
+      if(!this.fired){
+        this.fired = true;
+        this.particles.fire(this.parts.head.getWorldPosition(),
+            this.parts.head.getWorldDirection(),
+            10, 1, 1, 10, 3); 
+      }
       robot.parts.body.rotation.x = 2*this.ft * (2*Math.PI - angle);  
       robot.parts.neck.rotation.y = 2*this.ft * (2*Math.PI - angle);  
       robot.parts.head.rotation.z = 2*this.ft * (2*Math.PI - angle);  
