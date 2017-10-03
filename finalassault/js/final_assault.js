@@ -12,8 +12,6 @@ var MAX_SPEED = 1;
     this.root = null;
     this.ft = 0; 
     this.speed = 0;
-    //this is forward.. due to the orientation of the geometry
-    this.direction = new THREE.Vector3(0, 0, -1);
   };
 
   /*
@@ -71,6 +69,8 @@ var MAX_SPEED = 1;
             _self.parts.foot_right.position.set(0, -7, -9);
        _self.parts.leg_lower_right.position.set(0, -10, 6);
        _self.parts.leg_upper_right.position.set(6, 0, 0);
+  
+       _self.parts.axis.rotation.y = -Math.PI;
 
       _self.setStatus("enter_idle");
       cb();
@@ -106,6 +106,14 @@ var MAX_SPEED = 1;
       this.setStatus("enter_idle");
     }
   };
+
+
+  /**
+   * onTurn
+   */ 
+  FS.Robot.prototype.onTurn = function(side){
+    this.turning = side; 
+  }
 
   /**
    * enter a new status
@@ -171,9 +179,19 @@ var MAX_SPEED = 1;
     this.updateFiring(dt);
 
     //handling position updates
-    this.root.position.x += this.direction.x*this.speed*dt*0.1;
-    this.root.position.z += this.direction.z*this.speed*dt*0.1;
-
+    if(this.speed>0){
+      var dir = this.root.getWorldDirection();
+      this.root.position.x += dir.x*this.speed*dt*0.1;
+      this.root.position.z += dir.z*this.speed*dt*0.1;
+    }
+      if(this.turning){
+        if(this.turning === "right"){
+          this.root.rotation.y -= dt*Math.PI*0.001;
+          
+        }else{
+          this.root.rotation.y += dt*Math.PI*0.001;
+        }
+      }
   };
 
 

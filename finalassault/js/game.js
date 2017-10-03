@@ -82,9 +82,18 @@ function update(){
   keyboard.update();
   if(keyboard.pressed("W")){
     robot.onForward();
-  }else{
+  }
+  else{
     robot.onStop();
   }
+  if(keyboard.pressed("A")){
+    robot.onTurn("left");
+  }else if(keyboard.pressed("D")){
+    robot.onTurn("right");
+  }else{
+    robot.onTurn(null);
+  }
+
   if(keyboard.pressed("space")){
     robot.fire();
   }
