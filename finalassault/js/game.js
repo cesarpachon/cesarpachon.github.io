@@ -5,7 +5,6 @@ window.FS = {};
 
 // Initialize variables.
 var scene, camera, renderer, WIDTH, HEIGHT;
-var PI = Math.PI;
 var angle = 0;
 var radius = 10;
 var cube;
@@ -34,15 +33,6 @@ function init(event) {
   renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
   container.appendChild(renderer.domElement);
 
-  // Create the cube.
-  var geom = new THREE.CubeGeometry(16,8,8, 1);
-  var material = new THREE.MeshStandardMaterial({
-    color: 0x401A07
-  });
-  cube = new THREE.Mesh(geom, material);
-
-  // Add the cube to the scene.
-  scene.add(cube);
 
   // Create and add a light source.
   var globalLight = new THREE.AmbientLight(0xffffff, 1);
@@ -89,28 +79,15 @@ function handleWindowResize() {
 
 
 function update(){
-
   keyboard.update();
   if(keyboard.pressed("W")){
     robot.onForward();
   }
-
+  if(keyboard.pressed("space")){
+    robot.fire();
+  }
   var dt  = this.clock.getDelta();
-  robot.update(dt);
-  
-  // The angle is incremented by 0.1 every frame. Try higher values for faster animation.
-  angle += .1;
-
-  // Try modifying the angle and/or radius for a different movement.
-  cube.position.x = cos(angle) * radius;
-  cube.position.y = sin(angle) * radius;
-
-  // You might want to use the same principle on the rotation property of an object. Uncomment the next line to see what happens.
-  //cube.rotation.z = cos(angle) * PI/4;
-
-  //Or vary the scale. Note that 1 is added as an offset to avoid a negative scale value.
-  //cube.scale.y = 1 + cos(angle) * .5;
-
+  robot.update(dt*1000);//seconds to millis
 }
 
 

@@ -7,6 +7,7 @@
     this.parts = {};
     //THREE.js root
     this.root = null;
+    this.ft = 0; 
     this.setStatus("enter_idle");
   };
 
@@ -70,6 +71,20 @@
   };
 
   
+  /**
+   * fire
+   */ 
+  FS.Robot.prototype.fire = function(){
+    if(this.firing) return; 
+    console.log("fire!");
+    this.fire_elapsed_time = 0; 
+    this.fire_total_time = 1500; 
+    this.firing = true; 
+  };
+
+  /**
+   * onForward
+   */ 
   FS.Robot.prototype.onForward = function(){
    if(this.status === "idle"){
      this.setStatus("entering_walking");  
@@ -88,7 +103,7 @@
       this.next_status = "idle";
     }else if(status === "idle"){
       this.elapsed_time = 0; 
-      this.total_time = 300;
+      this.total_time = 3000;
       this.next_status = null; //indicates loop
     }
     this.status = status;
@@ -99,7 +114,8 @@
    * update
    */
   FS.Robot.prototype.update = function(dt){
-    this.elapsed_time++;
+    //handling walking status
+    this.elapsed_time+=dt;
     if(this.total_time){
       if(this.elapsed_time < this.total_time){
         //stay on current state..
@@ -123,6 +139,35 @@
     else if(this.status === "idle"){
       this.updateIdle(dt);
     }
+    this.updateFiring(dt);
+  };
+
+  /**
+   *
+   */ 
+  FS.Robot.prototype.updateFiring = function(dt){
+    //handle firing status
+    if(this.firing){
+      this.fire_elapsed_time  += dt; 
+      if(this.fire_elapsed_time < this.fire_total_time){
+        this.ft = this.fire_elapsed_time / this.fire_total_time;
+      }else{
+        this.ft = 0; 
+        this.fire_elapsed_time = 0; 
+        this.firing = false; 
+      }
+    }
+    var angle = this.ft * 2*Math.PI;
+    if(this.ft < 0.5){
+      robot.parts.body.rotation.x = 2*this.ft * angle;  
+      robot.parts.neck.rotation.y = 2*this.ft * angle;  
+      robot.parts.head.rotation.z = 2*this.ft * angle;  
+    }else{
+      robot.parts.body.rotation.x = 2*this.ft * (2*Math.PI - angle);  
+      robot.parts.neck.rotation.y = 2*this.ft * (2*Math.PI - angle);  
+      robot.parts.head.rotation.z = 2*this.ft * (2*Math.PI - angle);  
+    }
+  
   };
 
   /**
@@ -135,14 +180,22 @@
   /**
    * updateIdle 
    */ 
-  FS.Robot.prototype.updateIdle = function(dt){
+  FS.Robot.prototype.updateIdle = function(){
     //convert the 0..1 factor into an angle
-    var angle  = this.t * (2*PI);
+    var angle  = this.t * (2*Math.PI);
+    var sin_angle = Math.sin(angle);
+    var cos_angle = Math.cos(angle);
    // console.log("dt "+ this.t + " angle " + angle);
     //move the axis up-down
-    this.parts.axis.position.y = Math.sin(angle)*0.5; 
+    this.parts.axis.position.y = sin_angle*0.5; 
     //compensate in legs (forward kinematic, sorry, no time for IK..)
-    //this.parts.
+    this.parts.leg_upper_left.rotation.x = sin_angle*0.05; 
+    this.parts.leg_lower_left.rotation.x = -sin_angle*0.05; 
+    this.parts.foot_left.rotation.x = -sin_angle*0.05; 
+    
+    this.parts.leg_upper_right.rotation.x = sin_angle*0.05; 
+    this.parts.leg_lower_right.rotation.x = -sin_angle*0.05; 
+    this.parts.foot_right.rotation.x = -sin_angle*0.05; 
   };
   
 
