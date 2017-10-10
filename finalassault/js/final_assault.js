@@ -221,8 +221,12 @@ var MAX_SPEED = 1;
     }else{
       if(!this.fired){
         this.fired = true;
+        var dir = this.root.getWorldDirection();
+            /*this.parts.head.getWorldDirection()*/
+        console.log("dir: ");
+        console.log(dir);
         this.particles.fire(this.parts.head.getWorldPosition(),
-            this.parts.head.getWorldDirection(),
+            dir,
             10, 1, 1, 10, 3); 
       }
       robot.parts.body.rotation.x = 2*this.ft * (2*Math.PI - angle);  
