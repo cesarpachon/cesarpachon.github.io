@@ -235,9 +235,6 @@
     var x,y, w, h;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
-    this.ctx.rect(20,20,150,100);
-    this.ctx.stroke();
-    
     this.ctx.rect(this.viewport.x, this.viewport.y,
         this.viewport.w, this.viewport.h);
     this.ctx.stroke();
