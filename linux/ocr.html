@@ -1,0 +1,25 @@
+<h1>ocr</h1>
+<ol>
+<li>convert pdf to .tif files, using gimp, export layers plugin.. (todo: do this with command line only)</li>
+<li>install tesseract: 
+  <code>
+ sudo apt-get install tesseract-ocr
+  </code>
+</li>
+<li>install spanish for tesseract: 
+  <code>
+tesseract --list-langs
+ sudo apt-get install tesseract-ocr-spa
+  </code>
+</li>
+<li>process each page (todo: script to do it in a single step): 
+  <code>
+  tesseract 1.tif 1.txt -l spa
+  </code>
+</li>
+<li> concatenate all txt files, with endlines as separators: 
+  <code>
+awk 'FNR==1{print ""}{print}' *.txt.txt > output.txt
+  </code>
+</li>
+</ol>
