@@ -1,0 +1,34 @@
+<html>
+  <!-- <meta charset="UTF-8">-->
+   <meta charset="ISO-8859-5">
+
+   <meta http-equiv="Content-Language" content="ru">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+  <body>
+    <h1>Serbian Alphabet Learning</h1>
+
+
+     <div class="editor">
+      <div class="modes">
+        <span id="cyrillic2latin">Transcribe the following sentence from Cyrillic to Latin:</span>
+        <span id="latin2cyrillic">Transcribe the following sentence from Latin to Cyrillic:</span>
+      </div>
+        <div class="english">the english meaning goes here</div>
+      <audio id="listen" controls=true src=""></audio>
+      <div id="source" class="sentence">
+        </div>
+      <div id="target" class="sentence">
+        </div>
+    </div>
+
+    <div class="keyboard">
+    </div>
+    <button id="next" type="button">Next</button>
+
+  </body>
+  <script charset="utf-8" src="serbianalphabet.min.js"></script>
+  <script>
+    let app = new App();
+    app.init();
+  </script>
+</html>
