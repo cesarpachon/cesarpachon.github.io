@@ -1,0 +1,94 @@
+<html>
+  <!-- <meta charset="UTF-8">-->
+   <meta charset="ISO-8859-5">
+
+   <meta http-equiv="Content-Language" content="ru">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="vendor/pure.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+  <body>
+
+ 
+<!--modal_errors.html begin-->
+<div class="mp_mt_ml_modal" id="modal_errors">
+  <div class="mp_mt_ml_spacer"></div>
+  
+  <div class="mp_mt_ml_modal_loader">
+    loader..
+  </div>
+
+  <div class="mp_mt_ml_modal_dialog">
+    <div id="modal_title">
+    title
+    </div>
+    <div id="modal_message">this is the message</div>
+    <input id="modal_input_text" type="text" class="mp_mt_ml_modal_input"></input>
+    <div>
+      <button id="modal_button_cancel" class="mp_mt_ml_modal_input" type="button">Cancel</button>
+      <button id="modal_button_ok" type="button">OK</button>
+    </div>
+  </div>
+
+  <div class="mp_mt_ml_spacer"></div>
+</div>
+<!--modal_errors.html end-->
+
+
+    <header>
+    <h1>Learning Serbian</h1>
+    </header>
+
+    <main>
+    
+    <section class="profiles">
+      <h2>Local Profiles</h2>
+      <ul>
+        <li class="profile">
+          cesar
+        </li>
+        <li>
+          martin
+        </li>
+      </ul>
+      <div>
+        <button id="add">add</button>
+        <button id="remove">remove</button>
+        <button id="select">select</button>
+      </div>
+    </section>
+
+    <section class="units">
+      <h2>Units</h2>
+      <ul id="units">
+        </ul>
+    </section>
+
+     <section class="editor">
+       <ul class="menu"> 
+          <li>points:<span id="points">0</span></li>
+          <li>progress: <span id="progress"></span> of <span id="total"></span></li>
+          <li>-</li>
+          <li><button id="next" type="button">Next</button></li>
+          <li><button id="help" type="button">Help</button></li>
+          <li><button id="exit" type="button">exit</button></li>
+       </ul>
+      <div class="modes">
+        <span id="serbian2english">Translate Serbian to English:</span>
+        <span id="english2serbian">Translate English to Serbian:</span>
+      </div>
+        <div class="question">the question goes here</div>
+        <div id="help" class="help"></div>
+      <div id="answer" class="sentence">
+        </div>
+      <div id="options" class="sentence">
+      </div>
+  </section>
+  </main>
+
+  </body>
+  <script charset="utf-8" src="lingosr.min.js"></script>
+  <script>
+    let app = new Lingoapp();
+    app.init();
+  </script>
+</html>
