@@ -228,11 +228,12 @@ button[disabled] {
   background-color: aquamarine;
   padding: 1rem;
   margin: 1rem;
-  font-style: italic;
   font-size: 1.5rem;
+  font-family: "Times New Roman";
 }
 .editor .sentence {
-  font-size: 2rem;
+  font-family: "Times New Roman";
+  font-size: 1.8rem;
   display: flex;
   margin: 1rem;
   padding: 1rem;
