@@ -4,7 +4,7 @@
 {"id":"3", "en":"with cheese", "cy":"Са сиром ", "hint":""},
 {"id":"4", "en":"with meat", "cy":"Са месом ", "hint":""},
 {"id":"5", "en":"yoghurt", "cy":"Јогурт ", "hint":""},
-{"id":"6", "en":"hungry", "cy":"Гладан ", "hint":""},
+{"id":"6", "en":"hungry", "cy":"Гладан ", "hint":"masc."},
 {"id":"7", "en":"sandwich", "cy":"Сендвич ", "hint":""},
 {"id":"8", "en":"here", "cy":"Овде ", "hint":""},
 {"id":"9", "en":"with ham", "cy":"Са шунком ", "hint":""},
