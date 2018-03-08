@@ -8,10 +8,19 @@
 <code>feh -m</code>
 
 <p>resize all images in a folder (mogrify to overwrite, convert to save as new)</p>
+<p>match width, preserving aspect:</p>
 <code>mogrify -resize 200 *.png</code>
+<p>match height, preserving aspect:</p>
+<code>mogrify -resize x200 *.png</code>
+<p>stretching:</p>
+<code> mogrify -resize 200x300! *.png</code>
+
 
 <p>convert all jpg images in png, keeping the originals: </p>
 <code>  mogrify -format png *.jpg</code>
+
+<p>Append images side by side to create a larger one (-append for vertical stack)</p>
+<code>convert +append img1.png img2.png img3.png out.png</code>
 
 <p>merge: mix images with alpha channel to produce a single one</p>
 <code>convert assets/skin/skin1.png assets/hair/hair0.png assets/face/face1.png  -flatten out.png</code>
