@@ -3,12 +3,12 @@
 <h2>Search</h2>
 <p>search file by name and edit:</p>
 <code>
-  :find filename
+  :find **/exactFileName
 </code>
 
 <p>Search files that contains expresion, and open the quickfix list to browse the results:</p>
 <code>
-  :grep -r expresion 
+  :grep -r "expresion" .
   :copen
   :close
 </code>
