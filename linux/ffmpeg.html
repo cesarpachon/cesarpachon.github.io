@@ -24,6 +24,9 @@ for file in *.ogg; do ffmpeg -i "$file" "${file%.ogg}".mp3; done
 ffmpeg -i source_video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 finale_video.mpeg
 </code>
 
+<p>Compress avi uncompressed to h64 lossless:</p>
+<code>ffmpeg -i sample.avi -c:v libx264 -preset slow -crf 17 sample.mkv</code>
+
 <p>
 limit the size of the output, in bytes. i.e, 4.7GB: 
 </p>
