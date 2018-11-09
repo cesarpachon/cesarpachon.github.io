@@ -55,6 +55,14 @@ Use rename with vim replace expression:
 <p>Just print the grand total</p>
 <code>find . -name \*.js   -exec cat {} \; | wc -l</code>
 
+<h2>Print exact lines</h2>
+<p>Print exact line ranges in a file:</p>
+<code>
+sed -n '100,110p;111q' filename.txt  
+</code>
+<code>
+awk 'FNR>100 && FNR<=110' filename.txt
+</code>
 
 <h2>manipulate mp3</h2>
 <p>
