@@ -8,7 +8,7 @@ window.TestEditor =
     this.options = options;
     let el = document.querySelector(this.options.sel);
     el.innerHTML = 'iframe starts here: <iframe width="300" height="200" src="https://cesarpachon.github.io/unitusti/test_editor.html"></iframe>';
-    window.addEventListener("message", onMessage);
+    window.addEventListener("message", ev => this.onMessage(ev));
   },
 
   unloadEditor : function(cb)
@@ -21,6 +21,7 @@ window.TestEditor =
   {
     console.log("onMessage");
     console.log(ev);
+    return false;
   },
 
   addTarget : function(ev)
