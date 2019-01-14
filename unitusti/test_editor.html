@@ -7,12 +7,14 @@
   <script>
     function getTarget ()
     {
-      let name = "name"+Date.now();
-      let description = "description for " + name;
-      let metadata = {
-        timestamp: Date.now()
-      };
-      return getTarget();
+      let target = {
+          name : "name"+Date.now(),
+          description : "description for " + name,
+          metadata : {
+            timestamp: Date.now()
+            }
+          };
+      return target;
     }
     function addTargetNoCors()
     {
