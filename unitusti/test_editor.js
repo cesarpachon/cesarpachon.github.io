@@ -14,5 +14,16 @@ window.TestEditor =
   {
     let el = document.querySelector(this.options.sel);
     el.innerHTML = "";
+  },
+
+  addTarget : function(ev)
+  {
+    console.log("addTarget");
+    let name = "name"+Date.now();
+    let description = "description for " + name;
+    let metadata = {
+      timestamp: Date.now()
+    };
+    this.options.oncreate(name, description, metadata);
   }
 }
