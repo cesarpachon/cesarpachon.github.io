@@ -20,18 +20,10 @@ window.TestEditor =
   onMessage : function(ev)
   {
     console.log("onMessage");
+    let target = ev.data;
     console.log(ev);
+    this.options.oncreate(target.name, target.description, target.metadata);
     return false;
-  },
-
-  addTarget : function(ev)
-  {
-    console.log("addTarget callback");
-    let name = "name"+Date.now();
-    let description = "description for " + name;
-    let metadata = {
-      timestamp: Date.now()
-    };
-    this.options.oncreate(name, description, metadata);
   }
+
 }

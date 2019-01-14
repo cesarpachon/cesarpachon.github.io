@@ -5,15 +5,24 @@
   <button type="button" onclick="addTargetNoCors()">add target no cors</button>
   <button type="button" onclick="addTargetCors()">add target cors</button>
   <script>
+    function getTarget ()
+    {
+      let name = "name"+Date.now();
+      let description = "description for " + name;
+      let metadata = {
+        timestamp: Date.now()
+      };
+      return getTarget();
+    }
     function addTargetNoCors()
     {
       console.log("addTargetNoCors from iframe content");
-      window.parent.postMessage("addTarget");
+      window.parent.postMessage(getTarget(), "");
     }
     function addTargetCors()
     {
       console.log("addTargetCors from iframe content");
-      window.parent.postMessage("addTarget", "*");
+      window.parent.postMessage(getTarget(), "*");
     }
   </script>
 
