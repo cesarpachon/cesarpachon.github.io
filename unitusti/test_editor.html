@@ -2,5 +2,19 @@
   <p>
   this is the content of the iframe
   </p>
-  <button type="button" onclick="TestEditor.addTarget">add target</button>
+  <button type="button" onclick="addTargetNoCors">add target no cors</button>
+  <button type="button" onclick="addTargetCors">add target cors</button>
+  <script>
+    function addTargetNoCors()
+    {
+      console.log("addTargetNoCors from iframe content");
+      window.parent.postMessage("addTarget");
+    }
+    function addTargetCors()
+    {
+      console.log("addTargetCors from iframe content");
+      window.parent.postMessage("addTarget", "*");
+    }
+  </script>
+
 </html>
