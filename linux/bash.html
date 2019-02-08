@@ -50,6 +50,10 @@ Use rename with vim replace expression:
 <p>find a file by pattern in subdirs</p>
 <code>find . -name "*.pdf" </code>
 
+<p>delete files that match a pattern recursively (i.e, vim swap files)</p>
+<code>find . -type f -name '.*.sw*' -delete</code>
+
+
 <p>count lines of code: print a list of files of a subdir along with the number of lines for each one</p>
 <code>find . -type f -name \*.c -exec wc -l {} \;</code>
 <p>Just print the grand total</p>
