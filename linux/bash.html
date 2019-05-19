@@ -24,9 +24,12 @@ grep -n search_string files //ej: grep -n main *.cpp
 <p>
 //list files that contains some string (only .c and .h in this example) -w forces exact word match.
 </p>
-<p>
+<code>
 grep --include=\*.{c,h} -rnw './' -e "your_search_string"
-</p>
+</code>
+<code>
+grep --include=\*.js -rnw './' -exclude node_modules -e "your_search_string"
+</code>
 
 <p>For replace, there is also rpl:</p>
 
