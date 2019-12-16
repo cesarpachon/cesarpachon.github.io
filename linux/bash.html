@@ -31,12 +31,17 @@ grep --include=\*.{c,h} -rnw './' -e "your_search_string"
 grep --include=\*.js -rnw './' -exclude node_modules -e "your_search_string"
 </code>
 
-<p>For replace, there is also rpl:</p>
+<p>For replace, there is rpl:</p>
 
 <code>
 rpl -v ori_string new_string files<br>
 //replace recursively on html files <br>
 rpl -R -x'.html' "old_string" "new_string" ./
+</code>
+
+<p>important! rpl has problems to run if files exist in different drive than /tmp folder. use sed instead:</p>
+<code>
+  sed -i 's/old_string/new_string/g' files
 </code>
 
 <h2>Rename files</h2>
