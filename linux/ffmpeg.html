@@ -31,6 +31,14 @@ ffmpeg -i source_video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 finale_vi
 limit the size of the output, in bytes. i.e, 4.7GB: 
 </p>
 
+
+<p>
+remove audio channels:
+</p>
+<code>
+ffmpeg -i INPUT -c copy -an OUTPUT 
+</code>
+
 <p>
 -fs 5000000000 
 </p>
