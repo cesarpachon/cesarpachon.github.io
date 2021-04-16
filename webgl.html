@@ -1,4 +1,6 @@
 <html>
+  <head>
+  </head>
   <body>
     <h1>Testing webgl availability</h1>
 
@@ -10,7 +12,8 @@
     <span id="webgl2">testing..</span>
     </p>
 
-  </body>
+</body>
+  <script src="https://raw.githubusercontent.com/bestiejs/platform.js/master/platform.js"></script>
   <script>
     var c = document.createElement('canvas');
     var context1 = c.getContext('webgl') || c.getContext('experimental-webgl');
