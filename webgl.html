@@ -12,8 +12,10 @@
     <span id="webgl2">testing..</span>
     </p>
 
+    <p id="platformdetails"></p>
+
 </body>
-  <script src="https://raw.githubusercontent.com/bestiejs/platform.js/master/platform.js"></script>
+  <script src="/vendor/platform.js"></script>
   <script>
     var c = document.createElement('canvas');
     var context1 = c.getContext('webgl') || c.getContext('experimental-webgl');
@@ -21,5 +23,7 @@
     
     document.getElementById('webgl1').innerHTML = context1?'detected':'not supported';
     document.getElementById('webgl2').innerHTML = context2?'detected':'not supported';
+
+    document.getElementById('platformdetails').innerHTML = JSON.stringify(platform, true, '<br>');
   </script>
 </html>
