@@ -1,38 +1,7 @@
 import React from "react";
 
-const  BRAILLE = {
-  "100000": "a",
-  "110000": "b",
-  "100100": "c",
-  "100110": "d",
-  "100010": "e",
-  "110100": "f",
-  "110110": "g",
-  "110010": "h",
-  "010100": "i",
-  "010110": "j",
-  "101000": "k",
-  "111000": "l",
-  "101100": "m",
-  "101110": "n",
-  "101010": "o",
-  "111100": "p",
-  "111110": "q",
-  "111010": "r",
-  "011100": "s",
-  "011110": "t",
-  "101001": "u",
-  "111001": "v",
-  "101101": "x",
-  "101111": "y",
-  "101011": "z",
-  "001001": " ",
-  "010010": "-",
-};
-
 let ctx = null;
 let TOUCHES = [];
-let timeoutid = null;
 
 const BrailleCanvas = ({ onChange }) => {
   const canvasRef = React.useRef();
@@ -55,7 +24,6 @@ const BrailleCanvas = ({ onChange }) => {
   }
 
   function drawTouches() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); 
     const radius = 30;
     for(let i=0; i<TOUCHES.length; i+=1) {
       const touch = TOUCHES[i];
@@ -71,59 +39,10 @@ const BrailleCanvas = ({ onChange }) => {
     };
   }
 
-  /**
-   * core part
-   * when timeout expires, we have a bunch of touches stored.
-   * we need to deduce what braille point are based on relative distances...
-   * ideal approach: have a SETUP mode that let the user to decide
-   * arbitrary position for each point.
-   * easiest way: use fixed boxes!
-  */
-  function processTouches() {
-    const pressed = [0, 0, 0, 0, 0, 0];
-    const height=window.innerHeight; 
-    const width=window.innerWidth;
-    for(let i=0; i<TOUCHES.length; i+=1) {
-      const touch = TOUCHES[i];
-      if(touch.clientX < width*0.5) {
-        // 1, 2 or 3
-        if ((touch.clientY) < height * 0.33) {
-          pressed[0] = 1;
-        } else if ((touch.clientY) > height * 0.66) {
-          pressed[2] = 1;
-        } else {
-          pressed[1] = 1;
-        }
-      } else {
-        // 4, 5, or 6
-        if (touch.clientY < height * 0.33) {
-          pressed[3] = 1;
-        } else if (touch.clientY > height * 0.66) {
-          pressed[5] = 1;
-        } else {
-          pressed[4] = 1;
-        }
-      }
-    }
-    const braillekey = pressed.join('');
-    const brailleval = BRAILLE[braillekey];
-    console.log(braillekey, brailleval);
-
-    onChange(brailleval, braillekey);
-  }
-
-  function onTimeout() {
-    console.log("touches: ", TOUCHES.length);
-    processTouches();
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  }
-
   function onTouchStart(ev) {
     console.log("start");
     ev.preventDefault();
     console.log(ev.targetTouches);
-    clearTimeout(timeoutid);
-    timeoutid = setTimeout(onTimeout, 1000);
     TOUCHES = ev.targetTouches;
     drawTouches();
     return false;
@@ -131,6 +50,7 @@ const BrailleCanvas = ({ onChange }) => {
 
   function onTouchEnd(ev) {
     ev.preventDefault();
+    console.log("end");
     console.log(ev.targetTouches);
     return false;
   }

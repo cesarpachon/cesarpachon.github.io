@@ -20,12 +20,11 @@ export default function UserPage() {
 
   function edit() {
     setMode('edit');
-    setText(note.text);
+    setText(note.txt);
   }
 
-  function onChange(newtext, braillekey) {
-    note.text = `${text} ${newtext}[${braillekey}]`;
-    setText(note.text);
+  function onChange(newtext) {
+    setText(newtext);
   }
 
 return (
@@ -37,7 +36,7 @@ return (
     <BrailleCanvas onChange={onChange} />
   }
   </h1>
-<div>{text}</div>
+<div>{note.text}</div>
 </>
 );
 }
