@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/braillepad/build/static/css/main.e6c13ad2.css",
-    "main.js": "/braillepad/build/static/js/main.704b7d74.js",
-    "static/js/787.771c16b0.chunk.js": "/braillepad/build/static/js/787.771c16b0.chunk.js",
-    "service-worker.js": "/braillepad/build/service-worker.js",
-    "index.html": "/braillepad/build/index.html",
-    "main.e6c13ad2.css.map": "/braillepad/build/static/css/main.e6c13ad2.css.map",
-    "main.704b7d74.js.map": "/braillepad/build/static/js/main.704b7d74.js.map",
-    "787.771c16b0.chunk.js.map": "/braillepad/build/static/js/787.771c16b0.chunk.js.map"
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.cb972bde.js",
+    "static/js/787.771c16b0.chunk.js": "/static/js/787.771c16b0.chunk.js",
+    "service-worker.js": "/service-worker.js",
+    "index.html": "/index.html",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.cb972bde.js.map": "/static/js/main.cb972bde.js.map",
+    "787.771c16b0.chunk.js.map": "/static/js/787.771c16b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.704b7d74.js"
+    "static/js/main.cb972bde.js"
   ]
 }
