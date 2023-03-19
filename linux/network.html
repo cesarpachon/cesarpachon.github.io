@@ -1,0 +1,56 @@
+<html>
+<body>
+<h1>networking</h1>
+<p>
+<a href="network.sh">script to diagnose network problems</a>
+</p>
+
+  <h2>test internet connection speed </h2>
+  <code>
+    sudo apt-get install speedtest-cli
+    speedtest-cli
+  </code>
+  
+<h2>capture packages to diagnose problems</h2>
+sudo tcpdump -i wlan0 host testapi.metacog.com
+
+<p>
+<strong>important! it works for http traffic only!</strong>
+</p>
+<p>
+http://xmodulo.com/sniff-http-traffic-command-line-linux.html
+</p>
+<p>
+sudo httpry -i <network-interface> 
+</p>
+
+<h2>simulate low network connections</h2>
+
+<p>
+sudo tc qdisc add dev wlan0 root netem delay 100ms
+</p>
+<p>
+wlan0 is the name of the device.
+</p>
+<p>
+netem is just any name to identify the new set of rules.
+</p>
+<p>
+sudo tc qdisc delete dev wlan0 root netem 
+</p>
+<h2>list of ip addresses in the LAN</h2>
+<p>
+<code>
+  nmap -sP 192.168.0.*
+</code>
+<br>
+https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
+</p>
+<p>discover the OS for a given machine</p>
+<code>
+sudo nmap -sT -O 192.168.1.121
+:q
+:qa
+  </code>
+</body>
+</html>

@@ -1,0 +1,265 @@
+/*
+based on: http://www.inserthtml.com/2012/06/custom-form-radio-checkbox/
+*/
+.mp_mt_checkbox {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+.mp_mt_checkbox:active,
+.mp_mt_checkbox:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.mp_mt_checkbox:checked {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  color: #99a1a7;
+}
+.mp_mt_checkbox:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #99a1a7;
+}
+.mp_mt_big_checkbox {
+  padding: 18px;
+}
+.mp_mt_big_checkbox:checked:after {
+  font-size: 28px;
+  left: 6px;
+}
+.mp_mt_ml_modal {
+  background-color: rgba(100, 100, 100, 0.3);
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  display: none;
+  z-index: 100;
+}
+.mp_mt_ml_modal .mp_mt_ml_spacer {
+  flex: 1 1 auto;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_dialog {
+  min-width: 220px;
+  background-color: whitesmoke;
+  opacity: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_dialog #modal_title {
+  background-color: #a1c9dc;
+  padding: 6px;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_dialog #modal_message {
+  flex: 1 1 auto;
+  margin: 20px 8px;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_dialog div {
+  display: flex;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_dialog div button {
+  margin: 10px auto;
+}
+.mp_mt_ml_modal .mp_mt_ml_modal_loader {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  border: 10px solid beige;
+  background-image: url('../img/loading.gif');
+  background-repeat: no-repeat;
+  padding-left: 30px !important;
+}
+.mp_mt_icon_big_search {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: 0px -128px;
+}
+.mp_mt_icon_tag {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: 0px 0px;
+}
+.mp_mt_icon_big_tag {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: 0px 0px;
+}
+.mp_mt_icon_picture {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: -64px 0px;
+}
+.mp_mt_icon_big_picture {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: -128px 0px;
+}
+.mp_mt_icon_sound {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: -64px -64px;
+}
+.mp_mt_icon_big_sound {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: -128px -128px;
+}
+.mp_mt_icon_card {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: -128px 0px;
+}
+.mp_mt_icon_big_card {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: -256px 0px;
+}
+.mp_mt_icon_target {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: -192px 0px;
+}
+.mp_mt_icon_big_target {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: -384px 0px;
+}
+.mp_mt_icon_target_template {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  height: 64px;
+  width: 64px;
+  background-size: 256px 256px;
+  background-position: -192px -64px;
+}
+.mp_mt_icon_big_target_template {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-size: 512px 512px;
+  background-position: -384px -128px;
+}
+/*Mixin for user-select property*/
+.shadow {
+  -moz-box-shadow: 2px 2px 1px 1px #ccc;
+  -webkit-box-shadow: 2px 2px 1px 1px #ccc;
+  box-shadow: 2px 2px 1px 1px #ccc;
+}
+div.editor .english {
+  background-color: aquamarine;
+  padding: 1rem;
+  margin: 1rem;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+div.editor .sentence {
+  font-size: 2rem;
+  display: flex;
+  margin: 1rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+  background-color: lightblue;
+}
+div.editor .sentence .key {
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 3px;
+  min-width: 1.5rem;
+  min-height: 2rem;
+  text-align: center;
+}
+div.editor .sentence .key .cyrilic {
+  color: #0686d0;
+}
+div.editor .sentence .key .latin {
+  color: #0475bc;
+}
+div.editor .sentence .key.selected {
+  border: 1px solid red;
+}
+div.keyboard {
+  display: flex;
+  background-color: gray;
+  padding: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+div.keyboard .key {
+  min-width: 4rem;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+div.keyboard .key .cyrilic {
+  color: #0686d0;
+}
+div.keyboard .key .latin {
+  color: #0475bc;
+}

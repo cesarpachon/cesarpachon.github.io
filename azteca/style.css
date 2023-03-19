@@ -1,0 +1,14 @@
+
+body{
+  font-family: 'Varela Round', sans-serif;
+}
+
+h1,p{
+    position: absolute;
+    z-index: 100;
+}
+
+p{
+  top: 60px;
+}
+

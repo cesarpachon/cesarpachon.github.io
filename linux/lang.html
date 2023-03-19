@@ -1,0 +1,37 @@
+<h1>language tools</h1>
+
+<h2>dictionaries</h2>
+
+<p>
+there are many wrappers for online services like google translate, but there is also the dictd daemon and the dict client:</p>
+
+<code>
+sudo apt-get install dictd 
+sudo apt-get install dict
+sudo apt-get install dict-freedict-eng-spa
+</code>
+
+<p>
+above commands will install the dict daemon and client, and the english-spanish dictionary.</p> 
+
+
+<p>list the installed dictionaries:</p>
+<code>
+dict -D
+</code>
+
+<p>translate something:</p>
+<code>
+dict -d fd-eng-spa "case"
+</code>
+
+<p>
+default eng-spa is too poor.. but you can add more online dictionaries to the service:</p>
+<code>
+sudo apt-get install dict-gcide
+sudo apt-get install dict-wn
+sudo apt-get install dict-devil
+sudo apt-get install dict-moby-thesaurus
+</code>
+
+<p><a href="http://askubuntu.com/questions/380847/is-it-possible-to-translate-words-via-terminal">original reference</a></p>

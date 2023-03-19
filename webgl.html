@@ -1,0 +1,29 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Testing webgl availability</h1>
+
+    <p>
+    Webgl 1:<span id="webgl1">testing..</span>
+    </p>
+    <p>
+    Webgl 2:
+    <span id="webgl2">testing..</span>
+    </p>
+
+    <p id="platformdetails"></p>
+
+</body>
+  <script src="/vendor/platform.js"></script>
+  <script>
+    var c = document.createElement('canvas');
+    var context1 = c.getContext('webgl') || c.getContext('experimental-webgl');
+    var context2 = c.getContext('webgl2');
+    
+    document.getElementById('webgl1').innerHTML = context1?'detected':'not supported';
+    document.getElementById('webgl2').innerHTML = context2?'detected':'not supported';
+
+    document.getElementById('platformdetails').innerHTML = JSON.stringify(platform, true, '<br>');
+  </script>
+</html>

@@ -1,0 +1,188 @@
+<h1>usefull bash tools</h1>
+
+
+<h2>General</h2>
+<p>Know your linux version:</p>
+<code>
+cat /etc/os-release
+</code>
+
+<h2>search and replace in files </h2>
+<p>
+GREP
+</p>
+<p>
+simple use of grep:
+</p>
+<p>
+grep -n search_string files //ej: grep -n main *.cpp
+</p>
+<p>list files of a given extension recursively, no exact match</p>
+<code>
+  grep -rn --include="*.js" keyword_to_search .
+</code>
+<p>
+//list files that contains some string (only .c and .h in this example) -w forces exact word match.
+</p>
+<code>
+grep --include=\*.{c,h} -rnw './' -e "your_search_string"
+</code>
+<code>
+grep --include=\*.js -rnw './' -exclude node_modules -e "your_search_string"
+</code>
+
+<p>For replace, there is rpl:</p>
+
+<code>
+rpl -v ori_string new_string files<br>
+//replace recursively on html files <br>
+rpl -R -x'.html' "old_string" "new_string" ./
+</code>
+
+<p>important! rpl has problems to run if files exist in different drive than /tmp folder. use sed instead:</p>
+<code>
+  sed -i 's/old_string/new_string/g' files
+</code>
+
+<h2>Rename files</h2>
+Use rename with vim replace expression: 
+<code>
+  rename -v 's/cards/trials/' *.js
+</code>
+
+<h2>Remove duplicated files</h2>
+<p>use <a href="https://itsfoss.com/find-duplicate-files-linux/">fdupes</a>!</p>
+
+<h2>Find</h2>
+
+<p>find a file by pattern in subdirs</p>
+<code>find . -name "*.pdf" </code>
+
+<p>delete files that match a pattern recursively (i.e, vim swap files)</p>
+<code>find . -type f -name '.*.sw*' -delete</code>
+
+
+<p>count lines of code: print a list of files of a subdir along with the number of lines for each one</p>
+<code>find . -type f -name \*.c -exec wc -l {} \;</code>
+<p>Just print the grand total</p>
+<code>find . -name \*.js   -exec cat {} \; | wc -l</code>
+
+<h2>Print exact lines</h2>
+<p>Print exact line ranges in a file:</p>
+<code>
+sed -n '100,110p;111q' filename.txt  
+</code>
+<code>
+awk 'FNR>100 && FNR<=110' filename.txt
+</code>
+
+<h2>manipulate mp3</h2>
+<p>
+#concatenate two mp3 files.
+</p>
+<p>
+mp3wrap destination.mp3 sources.mp3
+</p>
+<p>
+#example: source1.mp3 and source2.mp3 into destination mp3: mp3wrap destination.mp3 source*.mp3
+</p>
+
+<h2>additional fonts for the system</h2>
+<p>
+ install fonts
+</p>
+<p>
+sudo apt-get install fonts-cmu
+</p>
+<p>
+sudo apt-get install --reinstall ttf-mscorefonts-installer
+</p>
+
+<h2>Dictionaries</h2>
+
+<p>install the dictd dictionary daemon (use dict client). install dictionaries:</p>
+
+<ul>
+    <li>sudo apt-get install dict-gcide</li>
+    <li>
+        sudo apt-get install dict-wn
+    </li>
+    <li>
+        sudo apt-get install dict-devil
+    </li>
+    <li>
+        sudo apt-get install dict-fd-spa-en
+    </li>
+    <li>
+        sudo apt-get install dict-fd-eng-spa
+    </li>
+    <li>
+        sudo apt-get install dict-moby-thesaurus
+    </li>
+    <li>
+        sudo apt-get install dict-fd-eng-fra
+    </li>
+    <li>
+        sudo apt-get install dict-fd-fra-eng
+    </li>
+</ul>
+
+<h2>other</h2>
+<p>
+delete the lines of a text file from the given line number:
+</p>
+<p>
+sed -i '300000,$d' LearnogramSpark15m.log
+</p>
+
+<p>
+encode and decode binary files as base64
+</p>
+<p>
+ uuencode -m hola.txt  hola.base64  > hola.base64
+</p>
+<p>
+uudecode -o hola2.txt hola.base64
+</p>
+
+<h2>
+ENVIRONMENT VARS:
+</h2>
+<p>
+printenv                   #print all the global env.vars (just "set" prints both global and local)
+</p>
+<p>
+echo $var_name             #print a var by name
+</p>
+<p>
+export var_name=value      #export a var globally. just assign to create a local var (no export)
+</p>
+<p>
+unset var_name             #remove the var
+</p>
+<p>
+~/.bash_profile            #edit this file to persist changes for the given user
+</p>
+<p>
+/etc/environment           #edit this file to persist changes for all the users
+</p>
+<p>
+how to add to .bashrc:
+</p>
+<p>
+export PATH=$PATH:NEW_PATH
+</p>
+
+<h2>GCC: coloring output</h2>
+<code>
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+</code>
+
+
+<h2>download youtube playlists</h2>
+<p>
+//download a whole youtube playlist as mp3 files:
+</p>
+<p>
+youtube-dl -ix -k --audio-format mp3  YOUTUBE_PLAYLIST_URL
+<p>

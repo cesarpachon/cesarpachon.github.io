@@ -1,0 +1,72 @@
+﻿<h2><a href="#/documents.html">Artículos:</a> <a href="#/tutorials">Tutoriales</a></h2>
+
+ 
+<h3>Test Driven Development</h3>
+
+<p>
+es un fabuloso framework para desarrollar aplicaciones web de lado cliente (javascript en el browser). En este tutorial exploraremos cómo crear un asistente (wizard) usando Angular.js, con el fin de mostrar una aplicación de los conceptos de Directivas y Servicios.
+</p>
+
+<h4>Conceptos a aplicar</h4>
+
+<p>
+Los siguientes conceptos son importantes para entender Angular y la forma en que se aplica a la hora de diseñar la solución a un problema: 
+</p>
+
+<ul>
+	
+<li><strong>Javascript no intrusivo:</strong> 
+	hace referencia a escribir código javascript lo más aislado posible del html, y con un mínimo de manipulación del DOM. <br>
+	Antiguamente se acostumbraba agregar código javascript directamente en el html, tanto en etiquetas script como en callbacks. JQuery fue una primera aproximación al código javascript separado del html, sin embargo es una librería cuyo enfoque radica en una fuerte manipulación directa del DOM.<br> 
+	Angular va un paso más allá al aislar todavía más estos aspectos.    
+</li>
+<br>
+<li><strong>Módulos, controladores y servicios:</strong>     
+El principio de encapsulación se aplica en Angular a través de los módulos. Una aplicación Angular requiere al menos un módulo: el módulo principal de la aplicación (anotado con la directiva ng-app). <br>
+Dentro de los módulos se crean controladores, servicios y otros objetos (como factories y directivas). <br>
+</li>
+<br>
+<li>
+	<strong>Controladores:</strong> Un controlador en Angular sirve para implementar lógica de una sección de la aplicación exponiendo funcionalidad a la vista y usando servicios y otros objetos.  
+</li>
+<br>
+<li>
+	<strong>Servicios:</strong> Un controlador en Angular sirve para implementar lógica de una sección de la aplicación exponiendo funcionalidad a la vista y usando servicios y otros objetos.  
+</li>
+<br>
+<li>
+	<strong>Directivas:</strong> Las directivas son el mecanismo que utiliza Angular para enriquecer (anotar) el html. Existen muchas directivas predefinidas, como ng-app y ng-controller, que se pueden usar como elementos o atributos dentro del HTML, pero también se pueden escribir directivas propias que sirvan a usos específicos de cada proyecto.  
+</li>
+<br>
+<li>
+	<strong>Enlazado de doble vía:</strong> Una de las funcionalidades más interesantes de Angular es la de comunicar automáticamente cambios entre la vista y el controlador. si un elemento html está asociado a un valor de un controlador, Angular cambiará la variable cada vez que el elemento html cambie (por ejemplo, una caja de texto) y de manera similar cada vez que la variable en javascript cambie su valor, todos los elementos html asociados a ella se refrescarán automáticamente.    
+</li>
+
+
+</ul>
+
+<h4>Problema a resolver</h4>
+
+<p>
+El ejercicio a resolver es crear un asistente o wizard que permita recolectar información del perfil de un usuario. El asistente debe detectar si ya existe un perfil y en ese caso mostrar la información del mismo. <br>
+También debe permitir eliminar dicho perfil. 	
+</p>
+
+<h4>Estrategia de implementación</h4>
+
+<ul>
+<li>
+	La detección de la existencia de un perfil de usuario así como su eliminación y creación son funciones que deben ser independientes de la vista, y reusables desde cualquier parte. Esto las convierte en buenos candidatos para formar parte de un servicio de Angular. <br>
+	En el código de ejemplo, el servicio es llamado profileSrv, y esta implementado apoyado en el localStorage. 
+</li>
+
+<li>
+ El controlador wizardCtrl se encarga de mantener variables para capturar la información del nuevo perfil, así como el estado del asistente (en qué página va). Para poder hacer uso del servicio del paso anterior, se aplica inyección de dependencias para hacer que el servicio quede disponible dentro del controlador.  
+</li>
+
+<li>
+Las Directivas "profileWizardStep0X" generan el HTML para cada uno de los pasos del wizard. estas se activan o desactivan por medio de la directiva ng-show, que retorna true o falso de acuerdo a a la existencia de un objeto profile en el servicio. 
+</li>
+
+</ul>
+

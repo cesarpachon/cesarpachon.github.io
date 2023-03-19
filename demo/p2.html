@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/basic.css" />
+       <link rel="stylesheet" href="css/p2.css" />
+
+        <title>Drag</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
+    </head>
+
+    <body>
+
+        <h1>1 Recurso de Desarrollo</h1>
+        <p>Asocia cada enunciado con su respectivo dominio del conocimiento:</p>
+
+        <div class='feedback_ok' >Muy bien!</div>
+            <div class='feedback_bad' >Trata otra vez, seguro puedes hacerlo mejor.</div>
+
+        <div class="drop_items">
+            <div id="dominio1", class='drop_item'>Información</div>
+            <div id="dominio2", class='drop_item'>Proceso psicomotor</div>
+            <div id="dominio3", class='drop_item'>Proceso mental</div>
+        </div>
+
+
+        <div class='drag_items'>
+            <div id="dominio1", class='drag_item'><img src="img/p1.atomos.png" width="150px"/></div>
+            <div id="dominio1", class='drag_item'><img src="img/p1.empresas.png" width="150px"/></div>
+            <div id="dominio1", class='drag_item'><img src="img/p1.numeros.png" width="150px"/></div>
+            <div id="dominio2", class='drag_item'><img src="img/p1.papel.png" width="150px"/></div>
+            <div id="dominio2", class='drag_item'><img src="img/p1.muros.png" width="150px"/></div>
+            <div id="dominio2", class='drag_item'><img src="img/p1.camisas.png" width="150px"/></div>
+            <div id="dominio3", class='drag_item'><img src="img/p1.parrafo.png" width="150px"/></div>
+            <div id="dominio3", class='drag_item'><img src="img/p1.ingles.png" width="150px"/></div>
+            <div id="dominio3", class='drag_item'><img src="img/p1.cinco.png" width="150px"/></div>
+        </div>
+
+
+
+        <div class="buttons_bar">
+            <button class='falsetrue_validate'>Validar</button>
+            <button class='falsetrue_reset'>Reiniciar</button>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="js/drag.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            Drag.init();
+
+            //Drag.add_droppable("target0");
+            Drag.add_droppable($(".drop_items #dominio1"));
+            Drag.add_droppable($(".drop_items #dominio2"));
+            Drag.add_droppable($(".drop_items #dominio3"));
+
+            Drag.override_dropped_total(9);
+
+            $(".drag_item").draggable({
+                revert: "invalid",
+                snap: ".drop_item"
+            });
+
+        });
+
+    </script>
+
+
+</html>
